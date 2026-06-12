@@ -1,0 +1,35 @@
+{
+  "address": "0x008CFa89df5B0c780cA3462fc2602D7F8c7Ac315",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:12:13Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/Vyper_contract.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "Vyper_contract",
+    "CompilerVersion": "vyper:0.3.1",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 3,
+  "first_seen_pool": "0x141acE5Fd4435Fd341E396d579C91Df99fED10d4",
+  "first_seen_factory": "0xB9fC157394Af804a3578134A6585C0dc9cc990d4",
+  "first_seen_block": 16180666,
+  "example_pools": [
+    "0x141acE5Fd4435Fd341E396d579C91Df99fED10d4",
+    "0x2863a328A0B7fC6040f11614FA0728587DB8e353",
+    "0xF95AAa7EBB1620e46221B73588502960Ef63dBa0"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "address": "0x64AFA95e0C3D8410240a4262df9Fd82B12b64eDd",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:12:49Z",
+  "abi_status": "unavailable",
+  "abi_source": null,
+  "source_status": "unavailable",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [],
+  "source_file_count": 0,
+  "etherscan_source_metadata": {
+    "ContractName": "",
+    "CompilerVersion": "",
+    "OptimizationUsed": "",
+    "Runs": "",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "Unknown",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 2,
+  "first_seen_pool": "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
+  "first_seen_factory": "0x6A8cbed756804B16E05E741eDaBd5cB544AE21bf",
+  "first_seen_block": 18547976,
+  "example_pools": [
+    "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
+    "0xAC4Abe9bD07F0ea3b3078880A73f5b3BC4B396e7"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "address": "0x07CdEBF81977E111B08C126DEFA07818d0045b80",
+  "kind": "views_implementation",
+  "written_at": "2026-06-10T13:13:54Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/CurveCryptoViews2Optimized.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "CurveCryptoViews2Optimized",
+    "CompilerVersion": "vyper:0.3.10",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 380,
+  "first_seen_pool": "0x004C167d27ADa24305b76D80762997Fa6EB8d9B2",
+  "first_seen_factory": "0x98EE851a00abeE0d95D08cF4CA2BdCE32aeaAF7F",
+  "first_seen_block": 19379915,
+  "example_pools": [
+    "0x004C167d27ADa24305b76D80762997Fa6EB8d9B2",
+    "0x6A1C781B7B280E3c8BF04FDfb86C112C9Ac70a89",
+    "0x5f0985A8aAd85e82fD592a23Cc0501e4345fb18c",
+    "0x0fF26A978A61d40F6591fc700EF878E96aF6C2C0",
+    "0xca546aE6c3B2BB9Fba2b6e5EeB0881097CecE5B0"
+  ]
+}

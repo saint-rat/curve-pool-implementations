@@ -1,0 +1,33 @@
+{
+  "address": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:13:18Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/Vyper_contract.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "Vyper_contract",
+    "CompilerVersion": "vyper:0.3.7",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "000000000000000000000000ecb456ea5365865ebab8a2661b0c503410e9b347000000000000000000000000853d955acef822db058eb8505911ed77f175b99e0000000000000000000000008e870d67f660d95d5be530380d0ec0bd388289e1000000000000000000000000fc2838a17d8e8b1d5456e0a351b0708a0921114700000000000000000000000000000000000000000000000000000000000003e800000000000000000000000000000000000000000000000000000000000f4240000000000000000000000000000000000000000000000000000000012a05f200",
+    "EVMVersion": "paris",
+    "Library": "",
+    "LicenseType": "MIT",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 1,
+  "first_seen_pool": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
+  "first_seen_factory": null,
+  "first_seen_block": 16831677,
+  "example_pools": [
+    "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3"
+  ]
+}

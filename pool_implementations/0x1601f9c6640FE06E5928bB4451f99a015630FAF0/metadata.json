@@ -1,0 +1,33 @@
+{
+  "address": "0x1601f9c6640FE06E5928bB4451f99a015630FAF0",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:12:21Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/CurveTricryptoOptimized.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "CurveTricryptoOptimized",
+    "CompilerVersion": "vyper:0.3.10",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 1,
+  "first_seen_pool": "0x66da369fC5dBBa0774Da70546Bd20F2B242Cd34d",
+  "first_seen_factory": "0x0c0e5f2fF0ff18a3be9b835635039256dC4B4963",
+  "first_seen_block": 23691149,
+  "example_pools": [
+    "0x66da369fC5dBBa0774Da70546Bd20F2B242Cd34d"
+  ]
+}

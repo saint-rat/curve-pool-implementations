@@ -1,0 +1,37 @@
+{
+  "address": "0x8d61e01c49530873B1dddD6eB8E59574c8Df6849",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:13:00Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/<unknown>.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "Twocrypto",
+    "CompilerVersion": "vyper:0.4.3",
+    "OptimizationUsed": "1",
+    "Runs": "0",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 10,
+  "first_seen_pool": "0x7a2330c9AcB154B3dF925321493C97D0056A536f",
+  "first_seen_factory": "0x98EE851a00abeE0d95D08cF4CA2BdCE32aeaAF7F",
+  "first_seen_block": 24184924,
+  "example_pools": [
+    "0x7a2330c9AcB154B3dF925321493C97D0056A536f",
+    "0x0873aDf1260f8df312054C4697d2a39f41EFF357",
+    "0x26D85588B9eD20abA4Fa8Fb9b3C8977C4aAd133C",
+    "0xaeF08602844f1dCC36e92AF087f4FFEa426881c2",
+    "0x30770EFf0bbd36AB30777457f3996c6De66fa067"
+  ]
+}

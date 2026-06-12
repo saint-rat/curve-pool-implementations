@@ -1,0 +1,37 @@
+{
+  "address": "0x66442B0C5260B92cAa9c234ECf2408CBf6b19a6f",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:12:51Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/CurveTricryptoOptimizedWETH.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "CurveTricryptoOptimizedWETH",
+    "CompilerVersion": "vyper:0.3.9",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "",
+    "EVMVersion": "shanghai",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 121,
+  "first_seen_pool": "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+  "first_seen_factory": "0x0c0e5f2fF0ff18a3be9b835635039256dC4B4963",
+  "first_seen_block": 17371455,
+  "example_pools": [
+    "0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B",
+    "0xf5f5B97624542D72A9E06f04804Bf81baA15e2B4",
+    "0x2889302a794dA87fBF1D6Db415C1492194663D13",
+    "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
+    "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14"
+  ]
+}

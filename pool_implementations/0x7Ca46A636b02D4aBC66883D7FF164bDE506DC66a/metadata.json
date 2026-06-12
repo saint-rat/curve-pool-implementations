@@ -1,0 +1,36 @@
+{
+  "address": "0x7Ca46A636b02D4aBC66883D7FF164bDE506DC66a",
+  "kind": "pool_implementation",
+  "written_at": "2026-06-10T13:12:54Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/CurveStableSwap2Balances.vy"
+  ],
+  "source_file_count": 1,
+  "etherscan_source_metadata": {
+    "ContractName": "CurveStableSwap2Balances",
+    "CompilerVersion": "vyper:0.3.9",
+    "OptimizationUsed": "1",
+    "Runs": "1",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "MIT",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 4,
+  "first_seen_pool": "0xb7be2211430D8b59BFCBcA029c2f3a2577369A19",
+  "first_seen_factory": "0x4F8846Ae9380B90d2E71D5e3D042dff3E7ebb40d",
+  "first_seen_block": 18228356,
+  "example_pools": [
+    "0xb7be2211430D8b59BFCBcA029c2f3a2577369A19",
+    "0xB9eC78Bd89d3Ef17537f130CC72750FD4DE85f82",
+    "0x707EAe1CcFee0B8fef07D3F18EAFD1246762d587",
+    "0x2dabF79E16ceb92B651651f47b6E835C9DB5828A"
+  ]
+}

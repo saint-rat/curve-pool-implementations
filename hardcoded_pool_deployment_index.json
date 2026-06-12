@@ -1,0 +1,4464 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-10T00:02:47Z",
+    "source": "poolData.json",
+    "compared_against": "factory_deployment_index.json",
+    "selection": "poolData pools whose address is absent from factory_deployment_index.pools",
+    "pool_count": 50,
+    "unique_implementation_count": 42,
+    "lp_token_same_as_pool_count": 3,
+    "lp_token_different_from_pool_count": 47,
+    "shape_note": "listed_in_factories/factory_list_index_by_factory use []/{} rather than null to match factory index field types.",
+    "metapool_count": 18,
+    "unique_base_pool_count": 2,
+    "base_pool_detail_note": "For metapools, deployment_details.args.base_pool_details is derived from the base pool row in poolData.json when available.",
+    "unique_math_implementation_count": 2,
+    "unique_views_implementation_count": 2
+  },
+  "factories": {},
+  "pools": [
+    {
+      "pool_address": "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x230a00553d373fe696304795818d35e8d9fded6e9a3c5907bb46709c0e3b3e64",
+        "blockNumber": "9456293",
+        "timestamp": "1581356758",
+        "block_datetime": "2020-02-10T17:45:58Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi cDAI/cUSDC/USDT",
+          "_symbol": "cDAI+cUSDC+USDT",
+          "_coins": [
+            "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+            "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          ],
+          "_decimals": [
+            "8",
+            "8",
+            "6"
+          ],
+          "coins": [
+            {
+              "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+              "symbol": "cDAI",
+              "name": "Compound Dai",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+              "symbol": "cUSDC",
+              "name": "Compound USD Coin",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "2000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C",
+      "lp_token_address": "0x9fC689CCaDa600B6DF723D9E47D84d76664a1F23",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xfcad3de85c938d51bf58ba087daf2b1d3506c08a623c30689452876886524402",
+        "blockNumber": "9476468",
+        "timestamp": "1581624465",
+        "block_datetime": "2020-02-13T20:07:45Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi yDAI/yUSDC/yUSDT/yTUSD",
+          "_symbol": "yDAI+yUSDC+yUSDT+yTUSD",
+          "_coins": [
+            "0x16de59092dAE5CcF4A1E6439D611fd0653f0Bd01",
+            "0xd6aD7a6750A7593E092a9B218d66C0A814a3436e",
+            "0x83f798e925BcD4017Eb265844FDDAbb448f1707D",
+            "0x73a052500105205d34Daf004eAb301916DA8190f"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x16de59092dAE5CcF4A1E6439D611fd0653f0Bd01",
+              "symbol": "yDAI",
+              "name": "iearn DAI",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xd6aD7a6750A7593E092a9B218d66C0A814a3436e",
+              "symbol": "yUSDC",
+              "name": "iearn USDC",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x83f798e925BcD4017Eb265844FDDAbb448f1707D",
+              "symbol": "yUSDT",
+              "name": "iearn USDT",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x73a052500105205d34Daf004eAb301916DA8190f",
+              "symbol": "yTUSD",
+              "name": "iearn TUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "2048",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51",
+      "lp_token_address": "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x39f6f83e7b1b7dab4afa05020c0b3b4b1cbc64bfd583af46122d26ef87f2d3f9",
+        "blockNumber": "9554040",
+        "timestamp": "1582656511",
+        "block_datetime": "2020-02-25T18:48:31Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi cDAI/cUSDC",
+          "_symbol": "cDAI+cUSDC",
+          "_coins": [
+            "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+            "0x39AA39c021dfbaE8faC545936693aC917d5E7563"
+          ],
+          "_decimals": [
+            "8",
+            "8"
+          ],
+          "coins": [
+            {
+              "address": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+              "symbol": "cDAI",
+              "name": "Compound Dai",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
+              "symbol": "cUSDC",
+              "name": "Compound USD Coin",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "4500",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56",
+      "lp_token_address": "0x845838DF265Dcd2c412A1Dc9e959c7d08537f8a2",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x661bd74a5e327806cffdeca98cc6a97bf7bc366cc5048d75ad64634f524c3485",
+        "blockNumber": "9567295",
+        "timestamp": "1582832215",
+        "block_datetime": "2020-02-27T19:36:55Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi yDAI/yUSDC/yUSDT/yBUSD",
+          "_symbol": "yDAI+yUSDC+yUSDT+yBUSD",
+          "_coins": [
+            "0xC2cB1040220768554cf699b0d863A3cd4324ce32",
+            "0x26EA744E5B887E5205727f55dFBE8685e3b21951",
+            "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447",
+            "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xC2cB1040220768554cf699b0d863A3cd4324ce32",
+              "symbol": "yDAI",
+              "name": "iearn DAI",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x26EA744E5B887E5205727f55dFBE8685e3b21951",
+              "symbol": "yUSDC",
+              "name": "iearn USDC",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447",
+              "symbol": "yUSDT",
+              "name": "iearn USDT",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE",
+              "symbol": "yBUSD",
+              "name": "iearn BUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "500",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27",
+      "lp_token_address": "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x51aca4a03a395de8855fa2ca59b7febe520c2a223e69c502066162f7c1a95ec2",
+        "blockNumber": "9906598",
+        "timestamp": "1587356044",
+        "block_datetime": "2020-04-20T04:14:04Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi DAI/USDC/USDT/sUSD",
+          "_symbol": "crvPlain3andSUSD",
+          "_coins": [
+            "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+              "symbol": "sUSD",
+              "name": "Synth sUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "256",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD",
+      "lp_token_address": "0xC25a3A3b969415c80451098fa907EC722572917F",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x06364f10B501e868329afBc005b3492902d6C763",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x1c814a8489fe62093810b2e3db416f1d520f9d29fbf9e0af4509a978bdd481a9",
+        "blockNumber": "10041041",
+        "timestamp": "1589155436",
+        "block_datetime": "2020-05-11T00:03:56Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi DAI/USDC/USDT/PAX",
+          "_symbol": "ypaxCrv",
+          "_coins": [
+            "0x99d1Fa417f94dcD62BfE781a1213c092a47041Bc",
+            "0x9777d7E2b60bB01759D0E2f8be2095df444cb07E",
+            "0x1bE5d71F2dA660BFdee8012dDc58D024448A0A59",
+            "0x8E870D67F660D95d5be530380D0eC0bd388289E1"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x99d1Fa417f94dcD62BfE781a1213c092a47041Bc",
+              "symbol": "ycDAI",
+              "name": "Curve (iearn fork) DAI",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x9777d7E2b60bB01759D0E2f8be2095df444cb07E",
+              "symbol": "ycUSDC",
+              "name": "Curve (iearn fork) USDC",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x1bE5d71F2dA660BFdee8012dDc58D024448A0A59",
+              "symbol": "ycUSDT",
+              "name": "Curve (iearn fork) USDT",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+              "symbol": "USDP",
+              "name": "Pax Dollar",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x06364f10B501e868329afBc005b3492902d6C763",
+      "lp_token_address": "0xD905e2eaeBe188fc92179b6350807D8bd91Db0D8",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x12422cd099f0b6a09fb6fb53e66ee1ec6a1bd8377718b5025c5998176cd27935",
+        "blockNumber": "10151385",
+        "timestamp": "1590637843",
+        "block_datetime": "2020-05-28T03:50:43Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi renBTC/wBTC",
+          "_symbol": "crvRenWBTC",
+          "_coins": [
+            "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+          ],
+          "_decimals": [
+            "8",
+            "8"
+          ],
+          "coins": [
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1000",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B",
+      "lp_token_address": "0x49849C98ae39Fff122806C06791Fa73784FB3675",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x6d1ef1e56febb5fdacedd5470aeb7ecbfe767963934821b62de9ad28da81179a",
+        "blockNumber": "10276641",
+        "timestamp": "1592315822",
+        "block_datetime": "2020-06-16T13:57:02Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi renBTC/wBTC/sBTC",
+          "_symbol": "crvRenWSBTC",
+          "_coins": [
+            "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+            "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6"
+          ],
+          "_decimals": [
+            "8",
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "100",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+      "lp_token_address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x2fd44e3e140a8243c62167969f49f8997acb16cee285b57f3556b2ee29414ba7",
+        "blockNumber": "10732328",
+        "timestamp": "1598401962",
+        "block_datetime": "2020-08-26T00:32:42Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi hBTC/wBTC",
+          "_symbol": "hCRV",
+          "_coins": [
+            "0x0316EB71485b0Ab14103307bf65a021042c6d380",
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+          ],
+          "_decimals": [
+            "18",
+            "8"
+          ],
+          "coins": [
+            {
+              "address": "0x0316EB71485b0Ab14103307bf65a021042c6d380",
+              "symbol": "HBTC",
+              "name": "Huobi BTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1000",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F",
+      "lp_token_address": "0xb19059ebb43466C323583928285a49f558E572Fd",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x20793bbf260912aae189d5d261ff003c9b9166da8191d8f9d63ff1c7722f3ac6",
+        "blockNumber": "10809473",
+        "timestamp": "1599422178",
+        "block_datetime": "2020-09-06T19:56:18Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi DAI/USDC/USDT",
+          "_symbol": "3Crv",
+          "_coins": [
+            "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6"
+          ],
+          "coins": [
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "4000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+      "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x8d47a7c764056da0b00f2bd4bab041c1afeb9fb2ac808e2bc5c09d7e5df7d8c4",
+        "blockNumber": "11005604",
+        "timestamp": "1602040124",
+        "block_datetime": "2020-10-07T03:08:44Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi GUSD/3Crv",
+          "_symbol": "gusd3CRV",
+          "_coins": [
+            "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "2",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+              "symbol": "GUSD",
+              "name": "Gemini dollar",
+              "decimals": "2",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd",
+              "symbol": "GUSD",
+              "name": "Gemini dollar",
+              "decimals": "2",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "2",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "1000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956",
+      "lp_token_address": "0xD2967f45c4f384DEEa880F807Be904762a3DeA07",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xff54936e4899c8bbbde54241f00ea6ad619e2f697a73d9d6c4a7eb961c9a5972",
+        "blockNumber": "11010070",
+        "timestamp": "1602100943",
+        "block_datetime": "2020-10-07T20:02:23Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi HUSD/3Crv",
+          "_symbol": "husd3CRV",
+          "_coins": [
+            "0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
+              "symbol": "HUSD",
+              "name": "HUSD",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
+              "symbol": "HUSD",
+              "name": "HUSD",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "8",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604",
+      "lp_token_address": "0x5B5CFE992AdAC0C9D48E05854B2d91C73a003858",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x0bc48bb72f61bc85c71f00bc535037962bd718bf4d49d92899ebe2b929e4f139",
+        "blockNumber": "11010305",
+        "timestamp": "1602104214",
+        "block_datetime": "2020-10-07T20:56:54Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi USDK/3Crv",
+          "_symbol": "usdk3CRV",
+          "_coins": [
+            "0x1c48f86ae57291F7686349F12601910BD8D470bb",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x1c48f86ae57291F7686349F12601910BD8D470bb",
+              "symbol": "USDK",
+              "name": "USDK",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x1c48f86ae57291F7686349F12601910BD8D470bb",
+              "symbol": "USDK",
+              "name": "USDK",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0x97E2768e8E73511cA874545DC5Ff8067eB19B787",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xf341669c8e91e29624f10534ff6518205b13cf02e247438a9d03866fdf9bd91b",
+        "blockNumber": "11010514",
+        "timestamp": "1602106961",
+        "block_datetime": "2020-10-07T21:42:41Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi USDN/3Crv",
+          "_symbol": "usdn3CRV",
+          "_coins": [
+            "0x674C6Ad92Fd080e4004b2312b45f796a192D27a0",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x674C6Ad92Fd080e4004b2312b45f796a192D27a0",
+              "symbol": "USDN",
+              "name": "Neutrino USD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x674C6Ad92Fd080e4004b2312b45f796a192D27a0",
+              "symbol": "USDN",
+              "name": "Neutrino USD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "250",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0x4f3E8F405CF5aFC05D68142F3783bDfE13811522",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xcd73c2fcb3e279c0e555b09ce24ec49d7a49ff7a1a0a9eefb8bf90e837faa8df",
+        "blockNumber": "11011556",
+        "timestamp": "1602121063",
+        "block_datetime": "2020-10-08T01:37:43Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi LinkUSD/3Crv",
+          "_symbol": "LinkUSD3CRV",
+          "_coins": [
+            "0x0E2EC54fC0B509F445631Bf4b91AB8168230C752",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x0E2EC54fC0B509F445631Bf4b91AB8168230C752",
+              "symbol": "LINKUSD",
+              "name": "LINKUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x0E2EC54fC0B509F445631Bf4b91AB8168230C752",
+              "symbol": "LINKUSD",
+              "name": "LINKUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "5",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0x6D65b498cb23deAba52db31c93Da9BFFb340FB8F",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x8474DdbE98F5aA3179B3B3F5942D724aFcdec9f6",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xfc3bacdeab60f5dc329489abf07b1f7b97fe2c21b354ac9309b06fb3af822c27",
+        "blockNumber": "11011940",
+        "timestamp": "1602126284",
+        "block_datetime": "2020-10-08T03:04:44Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi MUSD/3Crv",
+          "_symbol": "musd3CRV",
+          "_coins": [
+            "0xe2f2a5C287993345a840Db3B0845fbC70f5935a5",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xe2f2a5C287993345a840Db3B0845fbC70f5935a5",
+              "symbol": "mUSD",
+              "name": "mStable USD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0xe2f2a5C287993345a840Db3B0845fbC70f5935a5",
+              "symbol": "mUSD",
+              "name": "mStable USD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0x1AEf73d49Dedc4b1778d0706583995958Dc862e6",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xC18cC39da8b11dA8c3541C598eE022258F9744da",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x69c26a39c9b9b6cff576d666f08b20f4436f52d7e48bf62e5e510722dc9c4cd4",
+        "blockNumber": "11037531",
+        "timestamp": "1602469578",
+        "block_datetime": "2020-10-12T02:26:18Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi RSV/3Crv",
+          "_symbol": "rsv3CRV",
+          "_coins": [
+            "0x196f4727526eA7FB1e17b2071B3d8eAA38486988",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x196f4727526eA7FB1e17b2071B3d8eAA38486988",
+              "symbol": "RSV",
+              "name": "Reserve",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x196f4727526eA7FB1e17b2071B3d8eAA38486988",
+              "symbol": "RSV",
+              "name": "Reserve",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0xC2Ee6b0334C261ED60C72f6054450b61B8f18E35",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x0f5d1178c6eab65d649c6784093c755501933f9c503d644ec3d1d7694727441d",
+        "blockNumber": "11095928",
+        "timestamp": "1603242644",
+        "block_datetime": "2020-10-21T01:10:44Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi tBTC/sbtcCrv",
+          "_symbol": "tbtc/sbtcCrv",
+          "_coins": [
+            "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+            "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+              "symbol": "TBTC",
+              "name": "tBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+              "symbol": "sbtcCrv",
+              "name": "Curve.fi renBTC/wBTC/sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+              "symbol": "TBTC",
+              "name": "tBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "8",
+            "8",
+            "18",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+          "amplificationCoefficient": "150",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+            "name": "Curve.fi renBTC/wBTC/sBTC",
+            "symbol": "crvRenWSBTC",
+            "lp_token_address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+            "coins": [
+              {
+                "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+                "symbol": "renBTC",
+                "name": "renBTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+                "symbol": "WBTC",
+                "name": "Wrapped BTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+                "symbol": "sBTC",
+                "name": "Synth sBTC",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "8",
+              "8",
+              "18",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714"
+          }
+        }
+      },
+      "implementation_address": "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+      "lp_token_address": "0x64eda51d3Ad40D56b9dFc5554E06F94e1Dd786Fd",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x8038C01A0390a8c547446a0b2c18fc9aEFEcc10c",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x5ff4052c5bd8d33497b4c99d97e2a877ac6f8e46319825ee0381c0a0e5df4581",
+        "blockNumber": "11187276",
+        "timestamp": "1604451135",
+        "block_datetime": "2020-11-04T00:52:15Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi DUSD/3Crv",
+          "_symbol": "dusd3CRV",
+          "_coins": [
+            "0x5BC25f649fc4e26069dDF4cF4010F9f706c23831",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x5BC25f649fc4e26069dDF4cF4010F9f706c23831",
+              "symbol": "DUSD",
+              "name": "DefiDollar",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x5BC25f649fc4e26069dDF4cF4010F9f706c23831",
+              "symbol": "DUSD",
+              "name": "DefiDollar",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+      "lp_token_address": "0x3a664Ab939FD8482048609f652f9a0B0677337B9",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x7F55DDe206dbAD629C080068923b36fe9D6bDBeF",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xf7a1dc30b5b26e1230e15db9c202eeb42f339379a77f99435f0c0b381590b051",
+        "blockNumber": "11421596",
+        "timestamp": "1607559120",
+        "block_datetime": "2020-12-10T00:12:00Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi pBTC/sbtcCRV",
+          "_symbol": "pBTC/sbtcCRV",
+          "_coins": [
+            "0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
+            "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
+              "symbol": "pBTC",
+              "name": "pTokens BTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+              "symbol": "sbtcCrv",
+              "name": "Curve.fi renBTC/wBTC/sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
+              "symbol": "pBTC",
+              "name": "pTokens BTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "8",
+            "8",
+            "18",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+          "amplificationCoefficient": "200",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+            "name": "Curve.fi renBTC/wBTC/sBTC",
+            "symbol": "crvRenWSBTC",
+            "lp_token_address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+            "coins": [
+              {
+                "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+                "symbol": "renBTC",
+                "name": "renBTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+                "symbol": "WBTC",
+                "name": "Wrapped BTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+                "symbol": "sBTC",
+                "name": "Synth sBTC",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "8",
+              "8",
+              "18",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714"
+          }
+        }
+      },
+      "implementation_address": "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+      "lp_token_address": "0xDE5331AC4B3630f94853Ff322B66407e0D6331E8",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xba942fb19d43488720187a86d66f8a52c2c453817ecf1ea324ae5a77b57148a2",
+        "blockNumber": "11455022",
+        "timestamp": "1608004314",
+        "block_datetime": "2020-12-15T03:51:54Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi bBTC/sbtcCRV",
+          "_symbol": "bBTC/sbtcCRV",
+          "_coins": [
+            "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+            "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3"
+          ],
+          "_decimals": [
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+              "symbol": "BBTC",
+              "name": "Binance Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+              "symbol": "sbtcCrv",
+              "name": "Curve.fi renBTC/wBTC/sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+              "symbol": "BBTC",
+              "name": "Binance Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "8",
+            "8",
+            "8",
+            "18",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+          "amplificationCoefficient": "200",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+            "name": "Curve.fi renBTC/wBTC/sBTC",
+            "symbol": "crvRenWSBTC",
+            "lp_token_address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+            "coins": [
+              {
+                "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+                "symbol": "renBTC",
+                "name": "renBTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+                "symbol": "WBTC",
+                "name": "Wrapped BTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+                "symbol": "sBTC",
+                "name": "Synth sBTC",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "8",
+              "8",
+              "18",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714"
+          }
+        }
+      },
+      "implementation_address": "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b",
+      "lp_token_address": "0x410e3E86ef427e30B9235497143881f717d93c2A",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xd81dA8D904b52208541Bade1bD6595D8a251F8dd",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x74e42b1305166c5d16428268c56bee1ad449f151401e48844b86538bf5d3871d",
+        "blockNumber": "11459238",
+        "timestamp": "1608060220",
+        "block_datetime": "2020-12-15T19:23:40Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi oBTC/sbtcCRV",
+          "_symbol": "oBTC/sbtcCRV",
+          "_coins": [
+            "0x8064d9Ae6cDf087b1bcd5BDf3531bD5d8C537a68",
+            "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x8064d9Ae6cDf087b1bcd5BDf3531bD5d8C537a68",
+              "symbol": "oBTC",
+              "name": "BoringDAO BTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+              "symbol": "sbtcCrv",
+              "name": "Curve.fi renBTC/wBTC/sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x8064d9Ae6cDf087b1bcd5BDf3531bD5d8C537a68",
+              "symbol": "oBTC",
+              "name": "BoringDAO BTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+              "symbol": "renBTC",
+              "name": "renBTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "8",
+            "8",
+            "18",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+          "amplificationCoefficient": "200",
+          "assetType": "2",
+          "assetTypeName": "btc",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714",
+            "name": "Curve.fi renBTC/wBTC/sBTC",
+            "symbol": "crvRenWSBTC",
+            "lp_token_address": "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
+            "coins": [
+              {
+                "address": "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+                "symbol": "renBTC",
+                "name": "renBTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+                "symbol": "WBTC",
+                "name": "Wrapped BTC",
+                "decimals": "8",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+                "symbol": "sBTC",
+                "name": "Synth sBTC",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "8",
+              "8",
+              "18",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714"
+          }
+        }
+      },
+      "implementation_address": "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+      "lp_token_address": "0x2fE94ea3d5d4a175184081439753DE15AeF9d614",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x890f4e345B1dAED0367A877a1612f86A1f86985f",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xab5ecfa02c0b88654854b3a87ad347d7edc9ab0a537f98ed6947c29ba300f262",
+        "blockNumber": "11466568",
+        "timestamp": "1608157248",
+        "block_datetime": "2020-12-16T22:20:48Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi UST/3Crv",
+          "_symbol": "ust3CRV",
+          "_coins": [
+            "0xa47c8bf37f92aBed4A126BDA807A7b7498661acD",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xa47c8bf37f92aBed4A126BDA807A7b7498661acD",
+              "symbol": "UST",
+              "name": "Wrapped UST Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0xa47c8bf37f92aBed4A126BDA807A7b7498661acD",
+              "symbol": "UST",
+              "name": "Wrapped UST Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "100",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x890f4e345B1dAED0367A877a1612f86A1f86985f",
+      "lp_token_address": "0x94e131324b6054c0D789b190b2dAC504e4361b53",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xbd10f46552f1bb98bd268fb7bf377b2c532e49921468e9c8b916cf00602a8a8e",
+        "blockNumber": "11466871",
+        "timestamp": "1608161290",
+        "block_datetime": "2020-12-16T23:28:10Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi EURS/sEUR",
+          "_symbol": "eursCRV",
+          "_coins": [
+            "0xdB25f211AB05b1c97D595516F45794528a807ad8",
+            "0xD71eCFF9342A5Ced620049e616c5035F1dB98620"
+          ],
+          "_decimals": [
+            "2",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xdB25f211AB05b1c97D595516F45794528a807ad8",
+              "symbol": "EURS",
+              "name": "STASIS EURS Token",
+              "decimals": "2",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xD71eCFF9342A5Ced620049e616c5035F1dB98620",
+              "symbol": "sEUR",
+              "name": "Synth sEUR",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "100",
+          "assetType": "3",
+          "assetTypeName": "other",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA",
+      "lp_token_address": "0x194eBd173F6cDacE046C53eACcE9B953F28411d1",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xc5424B857f758E906013F3555Dad202e4bdB4567",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x1ecda5bed8ccc8524ca026732c20caf54c3b8735c6f0c341c72f102407b19259",
+        "blockNumber": "11491884",
+        "timestamp": "1608493181",
+        "block_datetime": "2020-12-20T19:39:41Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/sETH",
+          "_symbol": "eCRV",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb",
+              "symbol": "sETH",
+              "name": "Synth sETH",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "256",
+          "assetType": "1",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xc5424B857f758E906013F3555Dad202e4bdB4567",
+      "lp_token_address": "0xA3D87FffcE63B53E0d54fAa1cc983B7eB0b74A9c",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x1e3b4c34b38b42ad07ef12dc55248ebf996021028a44077cfd79bb194b4b1968",
+        "blockNumber": "11497106",
+        "timestamp": "1608561810",
+        "block_datetime": "2020-12-21T14:43:30Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi aDAI/aUSDC/aUSDT",
+          "_symbol": "a3CRV",
+          "_coins": [
+            "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+            "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+            "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811"
+          ],
+          "_decimals": [
+            "18",
+            "6",
+            "6"
+          ],
+          "coins": [
+            {
+              "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+              "symbol": "aDAI",
+              "name": "Aave interest bearing DAI",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xBcca60bB61934080951369a648Fb03DF4F96263C",
+              "symbol": "aUSDC",
+              "name": "Aave interest bearing USDC",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811",
+              "symbol": "aUSDT",
+              "name": "Aave interest bearing USDT",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "2000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE",
+      "lp_token_address": "0xFd2a8fA60Abd58Efe3EeE34dd494cD491dC14900",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xfac67ecbd423a5b915deff06045ec9343568edaec34ae95c43d35f2c018afdaa",
+        "blockNumber": "11592551",
+        "timestamp": "1609827515",
+        "block_datetime": "2021-01-05T06:18:35Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/stETH",
+          "_symbol": "steCRV",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+              "symbol": "stETH",
+              "name": "Liquid staked Ether 2.0",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "900",
+          "assetType": "1",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "lp_token_address": "0x06325440D014e39736583c165C2963BA99fAf14E",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xEB16Ae0052ed37f479f7fe63849198Df1765a733",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xecace61881920e5723f36d0832a2c924a0a51e67131869a68a0900ce53f22434",
+        "blockNumber": "11772500",
+        "timestamp": "1612215062",
+        "block_datetime": "2021-02-01T21:31:02Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi aDAI/aSUSD",
+          "_symbol": "saCRV",
+          "_coins": [
+            "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+            "0x6C5024Cd4F8A59110119C56f8933403A539555EB"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x028171bCA77440897B824Ca71D1c56caC55b68A3",
+              "symbol": "aDAI",
+              "name": "Aave interest bearing DAI",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6C5024Cd4F8A59110119C56f8933403A539555EB",
+              "symbol": "aSUSD",
+              "name": "Aave interest bearing SUSD",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "100",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xEB16Ae0052ed37f479f7fe63849198Df1765a733",
+      "lp_token_address": "0x02d341CcB60fAaf662bC0554d13778015d1b285C",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x0c06637a669d95a919cc741447ee1761e68f011209ad7ba05c34fdfc50436968",
+        "blockNumber": "11774139",
+        "timestamp": "1612236872",
+        "block_datetime": "2021-02-02T03:34:32Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/aETH",
+          "_symbol": "ankrCRV",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
+              "symbol": "ankrETH",
+              "name": "Ankr Staked ETH",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "10",
+          "assetType": "1",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2",
+      "lp_token_address": "0xaA17A236F2bAdc98DDc0Cf999AbB47D47Fc0A6Cf",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x7f1b5fb6c156001cba2891c4a5e0e5ee8ee136d6eeacf32488deedcd4ea0f29b",
+        "blockNumber": "11831119",
+        "timestamp": "1612994976",
+        "block_datetime": "2021-02-10T22:09:36Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi cyDAI/cyUSDC/cyUSDT",
+          "_symbol": "ib3CRV",
+          "_coins": [
+            "0x8e595470Ed749b85C6F7669de83EAe304C2ec68F",
+            "0x76Eb2FE28b36B3ee97F3Adae0C69606eeDB2A37c",
+            "0x48759F220ED983dB51fA7A8C0D2AAb8f3ce4166a"
+          ],
+          "_decimals": [
+            "8",
+            "8",
+            "8"
+          ],
+          "coins": [
+            {
+              "address": "0x8e595470Ed749b85C6F7669de83EAe304C2ec68F",
+              "symbol": "iDAI",
+              "name": "Iron Bank Dai Stablecoin",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x76Eb2FE28b36B3ee97F3Adae0C69606eeDB2A37c",
+              "symbol": "iUSDC",
+              "name": "Iron Bank USD Coin",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x48759F220ED983dB51fA7A8C0D2AAb8f3ce4166a",
+              "symbol": "iUSDT",
+              "name": "Iron Bank Tether USD",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "6000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap_lending",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF",
+      "lp_token_address": "0x5282a4eF67D9C33135340fB3289cc1711c13638C",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xafa06bbdbce2fb9001f2538228fe0ed3a21a9764ed63be90a42751e75d373f84",
+        "blockNumber": "11875215",
+        "timestamp": "1613580079",
+        "block_datetime": "2021-02-17T16:41:19Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi LINK/sLINK",
+          "_symbol": "linkCRV",
+          "_coins": [
+            "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+            "0xbBC455cb4F1B9e4bFC4B73970d360c8f032EfEE6"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+              "symbol": "LINK",
+              "name": "ChainLink Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xbBC455cb4F1B9e4bFC4B73970d360c8f032EfEE6",
+              "symbol": "sLINK",
+              "name": "Synth sLINK",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "100",
+          "assetType": "3",
+          "assetTypeName": "other",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0",
+      "lp_token_address": "0xcee60cFa923170e4f8204AE08B4fA6A3F5656F3a",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x42d7025938bEc20B69cBae5A77421082407f053A",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xf174b1f2ecda71c404259d5858a024400b1a0fa071a8022b192e517fce0c1085",
+        "blockNumber": "11922057",
+        "timestamp": "1614203283",
+        "block_datetime": "2021-02-24T21:48:03Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi USDP/3Crv",
+          "_symbol": "usdp3CRV",
+          "_coins": [
+            "0x1456688345527bE1f37E9e627DA0837D6f08C925",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x1456688345527bE1f37E9e627DA0837D6f08C925",
+              "symbol": "USDP",
+              "name": "USDP Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x1456688345527bE1f37E9e627DA0837D6f08C925",
+              "symbol": "USDP",
+              "name": "USDP Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "100",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x42d7025938bEc20B69cBae5A77421082407f053A",
+      "lp_token_address": "0x7Eb40E450b9655f4B3cC4259BCC731c63ff55ae6",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xF9440930043eb3997fc70e1339dBb11F341de7A8",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xf4777ea000ecc1aa5c81e41e671a1811e6e05f2e467206588b30ac1e7190937f",
+        "blockNumber": "12463576",
+        "timestamp": "1621417926",
+        "block_datetime": "2021-05-19T09:52:06Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/rETH",
+          "_symbol": "rCRV",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0x9559Aaa82d9649C7A7b220E7c461d2E74c9a3593"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x9559Aaa82d9649C7A7b220E7c461d2E74c9a3593",
+              "symbol": "rETH",
+              "name": "StaFi",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "10",
+          "assetType": "1",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xF9440930043eb3997fc70e1339dBb11F341de7A8",
+      "lp_token_address": "0x53a901d48795C58f485cBB38df08FA96a24669D5",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x91bcb470b2511d848d1d32e0cd14651ade28919991bbfada97e91f1e49e2d164",
+        "blockNumber": "12521538",
+        "timestamp": "1622194711",
+        "block_datetime": "2021-05-28T09:38:31Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi USD-BTC-ETH",
+          "_symbol": "crvTricrypto",
+          "_coins": [
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+          ],
+          "_decimals": [
+            "6",
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "symbol": "WETH",
+              "name": "Wrapped Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "3645",
+          "assetType": "4",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "tricrypto",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5",
+      "lp_token_address": "0xcA3d75aC011BF5aD07a98d02f18225F9bD9A6BDF",
+      "status": "resolved",
+      "math_implementation_address": "0x656Dd75d33a6241A0C4C2368eb00441Ad3113ec0",
+      "views_implementation_address": "0xCfB3CFEaE8c3F39aECDf7ec275a00d29ECA08535"
+    },
+    {
+      "pool_address": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xdafb6385ed988ce8aacecfe1d97b38ea5e60b1ebce74d2423f71ddd621680138",
+        "blockNumber": "12821148",
+        "timestamp": "1626218283",
+        "block_datetime": "2021-07-13T23:18:03Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi USD-BTC-ETH",
+          "_symbol": "crv3crypto",
+          "_coins": [
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+          ],
+          "_decimals": [
+            "6",
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "symbol": "WETH",
+              "name": "Wrapped Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1707629",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "tricrypto",
+          "registryId": "crypto",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46",
+      "lp_token_address": "0xc4AD29ba4B3c580e6D59105FFf484999997675Ff",
+      "status": "resolved",
+      "math_implementation_address": "0x8F68f4810CcE3194B6cB6F3d50fa58c2c9bDD1d5",
+      "views_implementation_address": "0x40745803C2faA8E8402E2Ae935933D07cA8f355c"
+    },
+    {
+      "pool_address": "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x05708fc49785b6120cd4e64715ebcf7837bd0085aec8ca03ffdbb9ee25a6876e",
+        "blockNumber": "13526617",
+        "timestamp": "1635711692",
+        "block_datetime": "2021-10-31T20:21:32Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve EURT-3Crv",
+          "_symbol": "crvEURTUSD",
+          "_coins": [
+            "0xC581b735A1688071A1746c968e0798D642EDE491",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xC581b735A1688071A1746c968e0798D642EDE491",
+              "symbol": "EURT",
+              "name": "Euro Tether",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0xC581b735A1688071A1746c968e0798D642EDE491",
+              "symbol": "EURT",
+              "name": "Euro Tether",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "20000000",
+          "assetTypeName": "unknown",
+          "isMetaPool": true,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b",
+      "lp_token_address": "0x3b6831c0077a1e44ED0a21841C3bC4dC11bCE833",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x272d09a235c885186cab720486f8652ba8099044d0a73c2cc2c9d9d78b20a9b7",
+        "blockNumber": "13530680",
+        "timestamp": "1635766643",
+        "block_datetime": "2021-11-01T11:37:23Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve EURS-USDC",
+          "_symbol": "crvEURSUSDC",
+          "_coins": [
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xdB25f211AB05b1c97D595516F45794528a807ad8"
+          ],
+          "_decimals": [
+            "6",
+            "2"
+          ],
+          "coins": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdB25f211AB05b1c97D595516F45794528a807ad8",
+              "symbol": "EURS",
+              "name": "STASIS EURS Token",
+              "decimals": "2",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "20000000",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B",
+      "lp_token_address": "0x3D229E1B4faab62F621eF2F6A610961f7BD7b23B",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xd8ed515d92bd83652a44c421488655993201513efa50dc3601fbdcba5a3afbe2",
+        "blockNumber": "13634171",
+        "timestamp": "1637171959",
+        "block_datetime": "2021-11-17T17:59:19Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "RAI3CRV",
+          "_symbol": "RAI3CRV",
+          "_coins": [
+            "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+              "symbol": "RAI",
+              "name": "Rai Reflex Index",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+              "symbol": "RAI",
+              "name": "Rai Reflex Index",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "underlying_decimals": [
+            "18",
+            "18",
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "100",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": true,
+          "poolType": "stableswap_meta",
+          "registryId": "main",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d",
+      "lp_token_address": "0x6BA5b4e438FA0aAf7C1bD179285aF65d13bD3D90",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xaa027a511b56a6c54d63fbf861babaf76716fcfffabe2ff4da6209ad8ee4a3e9",
+        "blockNumber": "13783426",
+        "timestamp": "1639223635",
+        "block_datetime": "2021-12-11T11:53:55Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve CVX-ETH",
+          "_symbol": "crvCVXETH",
+          "_coins": [
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "symbol": "WETH",
+              "name": "Wrapped Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+              "symbol": "CVX",
+              "name": "Convex Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "400000",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4",
+      "lp_token_address": "0x3A283D9c08E8b55966afb64C515f5143cf907611",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x9d2194084a6735e63f787b5c8f962b8b4deb6722a5f5bf686b60f34156928f8a",
+        "blockNumber": "13854276",
+        "timestamp": "1640170056",
+        "block_datetime": "2021-12-22T10:47:36Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve XAUT-3Crv",
+          "_symbol": "crvXAUTUSD",
+          "_coins": [
+            "0x68749665FF8D2d112Fa859AA293F07A622782F38",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x68749665FF8D2d112Fa859AA293F07A622782F38",
+              "symbol": "XAUt",
+              "name": "Tether Gold",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x68749665FF8D2d112Fa859AA293F07A622782F38",
+              "symbol": "XAUt",
+              "name": "Tether Gold",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200000000",
+          "assetTypeName": "unknown",
+          "isMetaPool": true,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44",
+      "lp_token_address": "0x8484673cA7BfF40F82B041916881aeA15ee84834",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x98638FAcf9a3865cd033F36548713183f6996122",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x5d02a70401937132ce2f848e435908d86883cbca675a3dfd4679e51710a824cb",
+        "blockNumber": "13931746",
+        "timestamp": "1641206489",
+        "block_datetime": "2022-01-03T10:41:29Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve SPELL-ETH",
+          "_symbol": "crvSPELLETH",
+          "_coins": [
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "0x090185f2135308BaD17527004364eBcC2D37e5F6"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "symbol": "WETH",
+              "name": "Wrapped Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x090185f2135308BaD17527004364eBcC2D37e5F6",
+              "symbol": "SPELL",
+              "name": "Spell Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "400000",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x98638FAcf9a3865cd033F36548713183f6996122",
+      "lp_token_address": "0x8282BD15dcA2EA2bDf24163E8f2781B30C43A2ef",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x941a1db568d7c99fe6ea6263a3506404fb1dd769d98ef3f1c8583e45abee617a",
+        "blockNumber": "13931849",
+        "timestamp": "1641208218",
+        "block_datetime": "2022-01-03T11:10:18Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve T-ETH",
+          "_symbol": "crvTETH",
+          "_coins": [
+            "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "0xCdF7028ceAB81fA0C6971208e83fa7872994beE5"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "symbol": "WETH",
+              "name": "Wrapped Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xCdF7028ceAB81fA0C6971208e83fa7872994beE5",
+              "symbol": "T",
+              "name": "Threshold Network Token",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "400000",
+          "assetTypeName": "unknown",
+          "isMetaPool": false,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x98638FAcf9a3865cd033F36548713183f6996122",
+      "lp_token_address": "0xCb08717451aaE9EF950a2524E33B6DCaBA60147B",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x1005F7406f32a61BD760CfA14aCCd2737913d546",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xb9fd4b257dafce43d71dad056e6e957b2c532f35b509d032b2fe6141fbad45f5",
+        "blockNumber": "14631073",
+        "timestamp": "1650589030",
+        "block_datetime": "2022-04-22T00:57:10Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi 2Pool USDC/USDT",
+          "_coins": [
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+          ],
+          "_decimals": [
+            "6",
+            "6"
+          ],
+          "coins": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1500",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x1005F7406f32a61BD760CfA14aCCd2737913d546",
+      "lp_token_address": "0x1005F7406f32a61BD760CfA14aCCd2737913d546",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0x4e0915C88bC70750D68C481540F081fEFaF22273",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xc82a3aba7d1e48ed50d294a346cd3b65a2b56e61d9c8a42bf823cafe7db1d0b6",
+        "blockNumber": "14631356",
+        "timestamp": "1650592784",
+        "block_datetime": "2022-04-22T01:59:44Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi 4pool USDC/USDT/UST/FRAX",
+          "_coins": [
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+            "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+            "0xa693B19d2931d498c5B318dF961919BB4aee87a5",
+            "0x853d955aCEf822Db058eb8505911ED77F175b99e"
+          ],
+          "_decimals": [
+            "6",
+            "6",
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xa693B19d2931d498c5B318dF961919BB4aee87a5",
+              "symbol": "UST",
+              "name": "UST",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+              "symbol": "FRAX",
+              "name": "Frax",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "500",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0x4e0915C88bC70750D68C481540F081fEFaF22273",
+      "lp_token_address": "0x4e0915C88bC70750D68C481540F081fEFaF22273",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x1f4254004ce9e19d4eb742ee5a69d30f29085902d976f73e97c44150225ef775",
+        "blockNumber": "14939588",
+        "timestamp": "1654887726",
+        "block_datetime": "2022-06-10T19:02:06Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi FRAX/USDC",
+          "_symbol": "crvFRAX",
+          "_coins": [
+            "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+            "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+          ],
+          "_decimals": [
+            "18",
+            "6"
+          ],
+          "coins": [
+            {
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+              "symbol": "FRAX",
+              "name": "Frax",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1500",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2",
+      "lp_token_address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x8ccc12f8e4706cd642201a41141744c0de341a82575a4932b19c22560be4277b",
+        "blockNumber": "15045848",
+        "timestamp": "1656526957",
+        "block_datetime": "2022-06-29T18:22:37Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve EUROC-3Crv",
+          "_symbol": "EUROC3CRV",
+          "_coins": [
+            "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c",
+            "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490"
+          ],
+          "_decimals": [
+            "6",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c",
+              "symbol": "EURC",
+              "name": "Euro Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+              "symbol": "3Crv",
+              "name": "Curve.fi DAI/USDC/USDT",
+              "decimals": "18",
+              "isBasePoolLpToken": true
+            }
+          ],
+          "underlying_coins": [
+            {
+              "address": "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c",
+              "symbol": "EURC",
+              "name": "Euro Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+              "symbol": "DAI",
+              "name": "Dai Stablecoin",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "symbol": "USDC",
+              "name": "USD Coin",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+              "symbol": "USDT",
+              "name": "Tether USD",
+              "decimals": "6",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "base_pool_address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+          "amplificationCoefficient": "200000000",
+          "assetTypeName": "unknown",
+          "isMetaPool": true,
+          "poolType": "twocrypto",
+          "registryId": "crypto",
+          "implementationType": "direct",
+          "base_pool_details": {
+            "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
+            "name": "Curve.fi DAI/USDC/USDT",
+            "symbol": "3Crv",
+            "lp_token_address": "0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490",
+            "coins": [
+              {
+                "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+                "symbol": "DAI",
+                "name": "Dai Stablecoin",
+                "decimals": "18",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+                "symbol": "USDC",
+                "name": "USD Coin",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              },
+              {
+                "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+                "symbol": "USDT",
+                "name": "Tether USD",
+                "decimals": "6",
+                "isBasePoolLpToken": false
+              }
+            ],
+            "decimals": [
+              "18",
+              "6",
+              "6",
+              "0"
+            ],
+            "pool_type": "stableswap",
+            "registry_id": "main",
+            "implementation_type": "direct",
+            "implementation_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7"
+          }
+        }
+      },
+      "implementation_address": "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54",
+      "lp_token_address": "0x70fc957eb90E37Af82ACDbd12675699797745F68",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x94579d1aaf718518c61e75ddfda9054ecdba817317ca9bd549671da009257a09",
+        "blockNumber": "15741010",
+        "timestamp": "1665693251",
+        "block_datetime": "2022-10-13T20:34:11Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/frxETH",
+          "_symbol": "frxETHCRV",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0x5E8422345238F34275888049021821E8E08CAa1f"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+              "symbol": "frxETH",
+              "name": "Frax Ether",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1200",
+          "assetType": "0",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577",
+      "lp_token_address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xebdb42aba86a3b7f1902c25d92db5af7176784e231c4db636abb521c11a15d06",
+        "blockNumber": "16099802",
+        "timestamp": "1670020031",
+        "block_datetime": "2022-12-02T22:27:11Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi wBTC/sBTC",
+          "_symbol": "crvWSBTC",
+          "_coins": [
+            "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+            "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6"
+          ],
+          "_decimals": [
+            "8",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+              "symbol": "WBTC",
+              "name": "Wrapped BTC",
+              "decimals": "8",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+              "symbol": "sBTC",
+              "name": "Synth sBTC",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "100",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F",
+      "lp_token_address": "0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0x0778fe53ee6940cdfe9602aa24b0967a5bf90bbb9f75c9951390deba36ef0bb7",
+        "blockNumber": "16831677",
+        "timestamp": "1678863563",
+        "block_datetime": "2023-03-15T06:59:23Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi FRAX/USDP",
+          "_symbol": "crvfraxUSDP",
+          "_coins": [
+            "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+            "0x8E870D67F660D95d5be530380D0eC0bd388289E1"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+              "symbol": "FRAX",
+              "name": "Frax",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0x8E870D67F660D95d5be530380D0eC0bd388289E1",
+              "symbol": "USDP",
+              "name": "Pax Dollar",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "1000",
+          "assetType": "0",
+          "assetTypeName": "usd",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
+      "lp_token_address": "0xFC2838a17D8e8B1D5456E0a351B0708a09211147",
+      "status": "resolved"
+    },
+    {
+      "pool_address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+      "listed_in_factories": [],
+      "factory_list_index_by_factory": {},
+      "deployment_details": {
+        "factory": null,
+        "txHash": "0xc771d0e9e38aba83aa7b726317fd18e038ce04746d7588a7c20944e3d4812912",
+        "blockNumber": "17138959",
+        "timestamp": "1682616023",
+        "block_datetime": "2023-04-27T17:20:23Z",
+        "function": "direct_constructor_unparsed",
+        "args": {
+          "_name": "Curve.fi ETH/wBETH",
+          "_coins": [
+            "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+            "0xa2E3356610840701BDf5611a53974510Ae27E2e1"
+          ],
+          "_decimals": [
+            "18",
+            "18"
+          ],
+          "coins": [
+            {
+              "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+              "symbol": "ETH",
+              "name": "Ether",
+              "decimals": 18,
+              "isBasePoolLpToken": false
+            },
+            {
+              "address": "0xa2E3356610840701BDf5611a53974510Ae27E2e1",
+              "symbol": "wBETH",
+              "name": "Wrapped Binance Beacon ETH",
+              "decimals": "18",
+              "isBasePoolLpToken": false
+            }
+          ],
+          "amplificationCoefficient": "500",
+          "assetType": "0",
+          "assetTypeName": "eth",
+          "isMetaPool": false,
+          "poolType": "stableswap",
+          "registryId": "main",
+          "implementationType": "direct"
+        }
+      },
+      "implementation_address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+      "lp_token_address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6",
+      "status": "resolved"
+    }
+  ],
+  "unique_addresses": {
+    "implementations": [
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x06364f10B501e868329afBc005b3492902d6C763"
+        ],
+        "address": "0x06364f10B501e868329afBc005b3492902d6C763"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b"
+        ],
+        "address": "0x071c661B4DeefB59E2a3DdB20Db036821eeE8F4b"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA"
+        ],
+        "address": "0x0Ce6a5fF5217e38315f87032CF90686C96627CAA"
+      },
+      {
+        "used_by_pool_count": 6,
+        "example_pools": [
+          "0x3E01dD8a5E1fb3481F0F589056b428Fc308AF0Fb",
+          "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1",
+          "0xE7a24EF0C5e95Ffb0f6684b813A78F2a3AD7D171",
+          "0x8474DdbE98F5aA3179B3B3F5942D724aFcdec9f6",
+          "0xC18cC39da8b11dA8c3541C598eE022258F9744da"
+        ],
+        "address": "0x0f9cb53Ebe405d49A0bbdBD291A65Ff571bC83e1"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x1005F7406f32a61BD760CfA14aCCd2737913d546"
+        ],
+        "address": "0x1005F7406f32a61BD760CfA14aCCd2737913d546"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF"
+        ],
+        "address": "0x2dded6Da1BF5DBdF597C45fcFaa3194e53EcfeAF"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604"
+        ],
+        "address": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x42d7025938bEc20B69cBae5A77421082407f053A"
+        ],
+        "address": "0x42d7025938bEc20B69cBae5A77421082407f053A"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51"
+        ],
+        "address": "0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F"
+        ],
+        "address": "0x4CA9b3063Ec5866A4B82E437059D2C43d1be596F"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x4e0915C88bC70750D68C481540F081fEFaF22273"
+        ],
+        "address": "0x4e0915C88bC70750D68C481540F081fEFaF22273"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956"
+        ],
+        "address": "0x4f062658EaAF2C1ccf8C8e36D6824CDf41167956"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C"
+        ],
+        "address": "0x52EA46506B9CC5Ef470C5bf89f17Dc28bB35D85C"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d"
+        ],
+        "address": "0x618788357D0EBd8A37e763ADab3bc575D54c2C7d"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27"
+        ],
+        "address": "0x79a8C46DeA5aDa233ABaFFD40F3A0A2B1e5A4F27"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714"
+        ],
+        "address": "0x7fC77b5c7614E1533320Ea6DDc2Eb61fa00A9714"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5"
+        ],
+        "address": "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x890f4e345B1dAED0367A877a1612f86A1f86985f"
+        ],
+        "address": "0x890f4e345B1dAED0367A877a1612f86A1f86985f"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x93054188d876f558f4a66B2EF1d97d16eDf0895B"
+        ],
+        "address": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b"
+        ],
+        "address": "0x9838eCcC42659FA8AA7daF2aD134b53984c9427b"
+      },
+      {
+        "used_by_pool_count": 2,
+        "example_pools": [
+          "0x98638FAcf9a3865cd033F36548713183f6996122",
+          "0x752eBeb79963cf0732E9c0fec72a49FD1DEfAEAC"
+        ],
+        "address": "0x98638FAcf9a3865cd033F36548713183f6996122"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B"
+        ],
+        "address": "0x98a7F18d4E56Cfe84E3D081B40001B3d5bD3eB8B"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577"
+        ],
+        "address": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56"
+        ],
+        "address": "0xA2B47E3D5c44877cca798226B7B8118F9BFb7A56"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD"
+        ],
+        "address": "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2"
+        ],
+        "address": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44"
+        ],
+        "address": "0xAdCFcf9894335dC340f6Cd182aFA45999F45Fc44"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3"
+        ],
+        "address": "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
+        ],
+        "address": "0xB576491F1E6e5E62f1d8F26062Ee822B40B0E0d4"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
+        ],
+        "address": "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6"
+        ],
+        "address": "0xBfAb6FA95E0091ed66058ad493189D2cB29385E6"
+      },
+      {
+        "used_by_pool_count": 3,
+        "example_pools": [
+          "0xC25099792E9349C7DD09759744ea681C7de2cb66",
+          "0x7F55DDe206dbAD629C080068923b36fe9D6bDBeF",
+          "0xd81dA8D904b52208541Bade1bD6595D8a251F8dd"
+        ],
+        "address": "0xC25099792E9349C7DD09759744ea681C7de2cb66"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xc5424B857f758E906013F3555Dad202e4bdB4567"
+        ],
+        "address": "0xc5424B857f758E906013F3555Dad202e4bdB4567"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+        ],
+        "address": "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"
+        ],
+        "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2"
+        ],
+        "address": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE"
+        ],
+        "address": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54"
+        ],
+        "address": "0xE84f5b1582BA325fDf9cE6B0c1F087ccfC924e54"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xEB16Ae0052ed37f479f7fe63849198Df1765a733"
+        ],
+        "address": "0xEB16Ae0052ed37f479f7fe63849198Df1765a733"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0"
+        ],
+        "address": "0xF178C0b5Bb7e7aBF4e12A4838C7b7c5bA2C623c0"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F"
+        ],
+        "address": "0xf253f83AcA21aAbD2A20553AE0BF7F65C755A07F"
+      },
+      {
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xF9440930043eb3997fc70e1339dBb11F341de7A8"
+        ],
+        "address": "0xF9440930043eb3997fc70e1339dBb11F341de7A8"
+      }
+    ],
+    "math_implementations": [
+      {
+        "address": "0x656dd75d33a6241a0c4c2368eb00441ad3113ec0",
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5"
+        ]
+      },
+      {
+        "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+        ]
+      }
+    ],
+    "views_implementations": [
+      {
+        "address": "0x40745803c2faa8e8402e2ae935933d07ca8f355c",
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0xD51a44d3FaE010294C616388b506AcdA1bfAAE46"
+        ]
+      },
+      {
+        "address": "0xcfb3cfeae8c3f39aecdf7ec275a00d29eca08535",
+        "used_by_pool_count": 1,
+        "example_pools": [
+          "0x80466c64868E1ab14a1Ddf27A676C3fcBE638Fe5"
+        ]
+      }
+    ]
+  }
+}
