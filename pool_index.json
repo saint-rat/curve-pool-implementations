@@ -100223,10 +100223,12 @@
         "address": "0x1f7C86AffE5bCF7a1D74a8c8E2ef9E03BF31c1BD",
         "used_by_pool_count": 1,
         "artifact_dir": "pool_implementations/0x1f7C86AffE5bCF7a1D74a8c8E2ef9E03BF31c1BD",
-        "abi_status": "unavailable",
-        "source_status": "unavailable",
-        "source_file_count": 0,
-        "source_files": []
+        "abi_status": "source_getsourcecode",
+        "source_status": "verified",
+        "source_file_count": 1,
+        "source_files": [
+          "source/CurveStableSwapMetaNG.vy"
+        ]
       },
       {
         "address": "0x213be373FDff327658139C7df330817DAD2d5bBE",
@@ -100298,10 +100300,12 @@
         "address": "0x3E3B5F27bbf5CC967E074b70E9f4046e31663181",
         "used_by_pool_count": 6,
         "artifact_dir": "pool_implementations/0x3E3B5F27bbf5CC967E074b70E9f4046e31663181",
-        "abi_status": "unavailable",
-        "source_status": "unavailable",
-        "source_file_count": 0,
-        "source_files": []
+        "abi_status": "source_getsourcecode",
+        "source_status": "verified",
+        "source_file_count": 1,
+        "source_files": [
+          "source/CurveStableSwapNG.vy"
+        ]
       },
       {
         "address": "0x3eF6A01A0f81D6046290f3e2A8c5b843e738E604",
@@ -100461,10 +100465,12 @@
         "address": "0x64AFA95e0C3D8410240a4262df9Fd82B12b64eDd",
         "used_by_pool_count": 2,
         "artifact_dir": "pool_implementations/0x64AFA95e0C3D8410240a4262df9Fd82B12b64eDd",
-        "abi_status": "unavailable",
-        "source_status": "unavailable",
-        "source_file_count": 0,
-        "source_files": []
+        "abi_status": "source_getsourcecode",
+        "source_status": "verified",
+        "source_file_count": 1,
+        "source_files": [
+          "source/CurveStableSwapMetaNG.vy"
+        ]
       },
       {
         "address": "0x6523Ac15EC152Cb70a334230F6c5d62C5Bd963f1",
@@ -100921,10 +100927,12 @@
         "address": "0xDD7EBB1C49780519dD9755B8B1A23a6f42CE099E",
         "used_by_pool_count": 3,
         "artifact_dir": "pool_implementations/0xDD7EBB1C49780519dD9755B8B1A23a6f42CE099E",
-        "abi_status": "unavailable",
-        "source_status": "unavailable",
-        "source_file_count": 0,
-        "source_files": []
+        "abi_status": "source_getsourcecode",
+        "source_status": "verified",
+        "source_file_count": 1,
+        "source_files": [
+          "source/CurveStableSwapMetaNG.vy"
+        ]
       },
       {
         "address": "0xDeBF20617708857ebe4F679508E7b7863a8A8EeE",
