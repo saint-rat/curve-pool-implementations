@@ -1,7 +1,7 @@
 {
   "address": "0x66442B0C5260B92cAa9c234ECf2408CBf6b19a6f",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T05:29:59Z",
+  "written_at": "2026-06-15T08:41:06Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -33,5 +33,604 @@
     "0x2889302a794dA87fBF1D6Db415C1492194663D13",
     "0x5426178799ee0a0181A89b4f57eFddfAb49941Ec",
     "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14"
-  ]
+  ],
+  "loader_call_manifest": {
+    "generated_at": "2026-06-15T08:41:06Z",
+    "calls": [
+      {
+        "signature": "A()",
+        "selector": "f446c1d0",
+        "name": "A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "ADMIN_FEE()",
+        "selector": "4469ed14",
+        "name": "ADMIN_FEE",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "D()",
+        "selector": "0f529ba2",
+        "name": "D",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "DOMAIN_SEPARATOR()",
+        "selector": "3644e515",
+        "name": "DOMAIN_SEPARATOR",
+        "inputs": [],
+        "outputs": [
+          "bytes32"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "MATH()",
+        "selector": "ed6c1546",
+        "name": "MATH",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "WETH20()",
+        "selector": "17e26cd1",
+        "name": "WETH20",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "adjustment_step()",
+        "selector": "083812e5",
+        "name": "adjustment_step",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "admin_actions_deadline()",
+        "selector": "405e28f8",
+        "name": "admin_actions_deadline",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "allowed_extra_profit()",
+        "selector": "49fe9e77",
+        "name": "allowed_extra_profit",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "balances(uint256)",
+        "selector": "4903b0d1",
+        "name": "balances",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_balance"
+      },
+      {
+        "signature": "coins(uint256)",
+        "selector": "c6610657",
+        "name": "coins",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_coin"
+      },
+      {
+        "signature": "decimals()",
+        "selector": "313ce567",
+        "name": "decimals",
+        "inputs": [],
+        "outputs": [
+          "uint8"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "factory()",
+        "selector": "c45a0155",
+        "name": "factory",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "fee()",
+        "selector": "ddca3f43",
+        "name": "fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "fee_gamma()",
+        "selector": "72d4f0e2",
+        "name": "fee_gamma",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "fee_receiver()",
+        "selector": "cab4d3db",
+        "name": "fee_receiver",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A_gamma()",
+        "selector": "f30cfad5",
+        "name": "future_A_gamma",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A_gamma_time()",
+        "selector": "f9ed9597",
+        "name": "future_A_gamma_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "gamma()",
+        "selector": "b1373929",
+        "name": "gamma",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "get_virtual_price()",
+        "selector": "bb7b8b80",
+        "name": "get_virtual_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A_gamma()",
+        "selector": "204fe3d5",
+        "name": "initial_A_gamma",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A_gamma_time()",
+        "selector": "e89876ff",
+        "name": "initial_A_gamma_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "last_prices(uint256)",
+        "selector": "59189017",
+        "name": "last_prices",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_param"
+      },
+      {
+        "signature": "last_prices_timestamp()",
+        "selector": "6112c747",
+        "name": "last_prices_timestamp",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "lp_price()",
+        "selector": "54f0f7d5",
+        "name": "lp_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "ma_time()",
+        "selector": "09c3da6a",
+        "name": "ma_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "mid_fee()",
+        "selector": "92526c0c",
+        "name": "mid_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "name()",
+        "selector": "06fdde03",
+        "name": "name",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "out_fee()",
+        "selector": "ee8de675",
+        "name": "out_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "packed_fee_params()",
+        "selector": "e3616405",
+        "name": "packed_fee_params",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "packed_rebalancing_params()",
+        "selector": "3dd65478",
+        "name": "packed_rebalancing_params",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "precisions()",
+        "selector": "3620604b",
+        "name": "precisions",
+        "inputs": [],
+        "outputs": [
+          "uint256[3]"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "price_oracle(uint256)",
+        "selector": "68727653",
+        "name": "price_oracle",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_param"
+      },
+      {
+        "signature": "price_scale(uint256)",
+        "selector": "a3f7cdd5",
+        "name": "price_scale",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_param"
+      },
+      {
+        "signature": "salt()",
+        "selector": "bfa0b133",
+        "name": "salt",
+        "inputs": [],
+        "outputs": [
+          "bytes32"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "symbol()",
+        "selector": "95d89b41",
+        "name": "symbol",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "totalSupply()",
+        "selector": "18160ddd",
+        "name": "totalSupply",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "version()",
+        "selector": "54fd4d50",
+        "name": "version",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "virtual_price()",
+        "selector": "0c46b72a",
+        "name": "virtual_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "xcp_profit()",
+        "selector": "7ba1a74d",
+        "name": "xcp_profit",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "xcp_profit_a()",
+        "selector": "0b7b594b",
+        "name": "xcp_profit_a",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      }
+    ],
+    "skipped": [
+      {
+        "signature": "allowance(address,address)",
+        "selector": "dd62ed3e",
+        "name": "allowance",
+        "inputs": [
+          "address",
+          "address"
+        ],
+        "reason": "account_specific"
+      },
+      {
+        "signature": "balanceOf(address)",
+        "selector": "70a08231",
+        "name": "balanceOf",
+        "inputs": [
+          "address"
+        ],
+        "reason": "account_specific"
+      },
+      {
+        "signature": "calc_token_amount(uint256[3],bool)",
+        "selector": "3883e119",
+        "name": "calc_token_amount",
+        "inputs": [
+          "uint256[3]",
+          "bool"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "calc_token_fee(uint256[3],uint256[3])",
+        "selector": "cde699fa",
+        "name": "calc_token_fee",
+        "inputs": [
+          "uint256[3]",
+          "uint256[3]"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "calc_withdraw_one_coin(uint256,uint256)",
+        "selector": "4fb08c5e",
+        "name": "calc_withdraw_one_coin",
+        "inputs": [
+          "uint256",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "fee_calc(uint256[3])",
+        "selector": "572e5625",
+        "name": "fee_calc",
+        "inputs": [
+          "uint256[3]"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "get_dx(uint256,uint256,uint256)",
+        "selector": "37ed3a7a",
+        "name": "get_dx",
+        "inputs": [
+          "uint256",
+          "uint256",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "get_dy(uint256,uint256,uint256)",
+        "selector": "556d6e9f",
+        "name": "get_dy",
+        "inputs": [
+          "uint256",
+          "uint256",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "nonces(address)",
+        "selector": "7ecebe00",
+        "name": "nonces",
+        "inputs": [
+          "address"
+        ],
+        "reason": "account_specific"
+      }
+    ],
+    "unknown_view_functions": []
+  }
 }

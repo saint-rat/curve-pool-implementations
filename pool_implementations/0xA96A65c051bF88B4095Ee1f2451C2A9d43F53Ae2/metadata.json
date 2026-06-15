@@ -1,7 +1,7 @@
 {
   "address": "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T05:30:23Z",
+  "written_at": "2026-06-15T08:41:29Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -29,5 +29,289 @@
   "first_seen_block": 11774139,
   "example_pools": [
     "0xA96A65c051bF88B4095Ee1f2451C2A9d43F53Ae2"
-  ]
+  ],
+  "loader_call_manifest": {
+    "generated_at": "2026-06-15T08:41:29Z",
+    "calls": [
+      {
+        "signature": "A()",
+        "selector": "f446c1d0",
+        "name": "A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "A_precise()",
+        "selector": "76a2f0f0",
+        "name": "A_precise",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "admin_actions_deadline()",
+        "selector": "405e28f8",
+        "name": "admin_actions_deadline",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "admin_balances(uint256)",
+        "selector": "e2e7d264",
+        "name": "admin_balances",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_balance"
+      },
+      {
+        "signature": "admin_fee()",
+        "selector": "fee3f7f9",
+        "name": "admin_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "balances(uint256)",
+        "selector": "4903b0d1",
+        "name": "balances",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_balance"
+      },
+      {
+        "signature": "coins(uint256)",
+        "selector": "c6610657",
+        "name": "coins",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_coin"
+      },
+      {
+        "signature": "fee()",
+        "selector": "ddca3f43",
+        "name": "fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A()",
+        "selector": "b4b577ad",
+        "name": "future_A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A_time()",
+        "selector": "14052288",
+        "name": "future_A_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_admin_fee()",
+        "selector": "e3824462",
+        "name": "future_admin_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_fee()",
+        "selector": "58680d0b",
+        "name": "future_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_owner()",
+        "selector": "1ec0cdc1",
+        "name": "future_owner",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "get_virtual_price()",
+        "selector": "bb7b8b80",
+        "name": "get_virtual_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A()",
+        "selector": "5409491a",
+        "name": "initial_A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A_time()",
+        "selector": "2081066c",
+        "name": "initial_A_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "lp_token()",
+        "selector": "82c63066",
+        "name": "lp_token",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "owner()",
+        "selector": "8da5cb5b",
+        "name": "owner",
+        "inputs": [],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "transfer_ownership_deadline()",
+        "selector": "e0a0b586",
+        "name": "transfer_ownership_deadline",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      }
+    ],
+    "skipped": [
+      {
+        "signature": "calc_token_amount(uint256[2],bool)",
+        "selector": "ed8e84f3",
+        "name": "calc_token_amount",
+        "inputs": [
+          "uint256[2]",
+          "bool"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "calc_withdraw_one_coin(uint256,int128)",
+        "selector": "cc2b27d7",
+        "name": "calc_withdraw_one_coin",
+        "inputs": [
+          "uint256",
+          "int128"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "get_dx(int128,int128,uint256)",
+        "selector": "67df02ca",
+        "name": "get_dx",
+        "inputs": [
+          "int128",
+          "int128",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "get_dy(int128,int128,uint256)",
+        "selector": "5e0d443f",
+        "name": "get_dy",
+        "inputs": [
+          "int128",
+          "int128",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      }
+    ],
+    "unknown_view_functions": []
+  }
 }

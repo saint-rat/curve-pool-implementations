@@ -1,7 +1,7 @@
 {
   "address": "0xc629a01eC23AB04E1050500A3717A2a5c0701497",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T05:30:33Z",
+  "written_at": "2026-06-15T08:41:40Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -33,5 +33,402 @@
     "0xfBB481A443382416357fA81F16dB5A725DC6ceC8",
     "0x7C0d189E1FecB124487226dCbA3748bD758F98E4",
     "0x06c21B5d004604250a7f9639c4A3C28e73742261"
-  ]
+  ],
+  "loader_call_manifest": {
+    "generated_at": "2026-06-15T08:41:40Z",
+    "calls": [
+      {
+        "signature": "A()",
+        "selector": "f446c1d0",
+        "name": "A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "A_precise()",
+        "selector": "76a2f0f0",
+        "name": "A_precise",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "DOMAIN_SEPARATOR()",
+        "selector": "3644e515",
+        "name": "DOMAIN_SEPARATOR",
+        "inputs": [],
+        "outputs": [
+          "bytes32"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "admin_action_deadline()",
+        "selector": "e66f43f5",
+        "name": "admin_action_deadline",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "admin_balances(uint256)",
+        "selector": "e2e7d264",
+        "name": "admin_balances",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_balance"
+      },
+      {
+        "signature": "admin_fee()",
+        "selector": "fee3f7f9",
+        "name": "admin_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "balances(uint256)",
+        "selector": "4903b0d1",
+        "name": "balances",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_balance"
+      },
+      {
+        "signature": "coins(uint256)",
+        "selector": "c6610657",
+        "name": "coins",
+        "inputs": [
+          "uint256"
+        ],
+        "outputs": [
+          "address"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "range:n_coins",
+        "category": "pool_coin"
+      },
+      {
+        "signature": "decimals()",
+        "selector": "313ce567",
+        "name": "decimals",
+        "inputs": [],
+        "outputs": [
+          "uint8"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "ema_price()",
+        "selector": "c24c7c29",
+        "name": "ema_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "fee()",
+        "selector": "ddca3f43",
+        "name": "fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A()",
+        "selector": "b4b577ad",
+        "name": "future_A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_A_time()",
+        "selector": "14052288",
+        "name": "future_A_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "future_fee()",
+        "selector": "58680d0b",
+        "name": "future_fee",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "get_balances()",
+        "selector": "14f05979",
+        "name": "get_balances",
+        "inputs": [],
+        "outputs": [
+          "uint256[2]"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "get_p()",
+        "selector": "f2388acb",
+        "name": "get_p",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "get_virtual_price()",
+        "selector": "bb7b8b80",
+        "name": "get_virtual_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A()",
+        "selector": "5409491a",
+        "name": "initial_A",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "initial_A_time()",
+        "selector": "2081066c",
+        "name": "initial_A_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "last_price()",
+        "selector": "fde625e6",
+        "name": "last_price",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "ma_exp_time()",
+        "selector": "1be913a5",
+        "name": "ma_exp_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "ma_last_time()",
+        "selector": "1ddc3b01",
+        "name": "ma_last_time",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "name()",
+        "selector": "06fdde03",
+        "name": "name",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "price_oracle()",
+        "selector": "86fc88d3",
+        "name": "price_oracle",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "symbol()",
+        "selector": "95d89b41",
+        "name": "symbol",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "totalSupply()",
+        "selector": "18160ddd",
+        "name": "totalSupply",
+        "inputs": [],
+        "outputs": [
+          "uint256"
+        ],
+        "stateMutability": "view",
+        "arg_policy": "none",
+        "category": "pool_param"
+      },
+      {
+        "signature": "version()",
+        "selector": "54fd4d50",
+        "name": "version",
+        "inputs": [],
+        "outputs": [
+          "string"
+        ],
+        "stateMutability": "pure",
+        "arg_policy": "none",
+        "category": "pool_param"
+      }
+    ],
+    "skipped": [
+      {
+        "signature": "allowance(address,address)",
+        "selector": "dd62ed3e",
+        "name": "allowance",
+        "inputs": [
+          "address",
+          "address"
+        ],
+        "reason": "account_specific"
+      },
+      {
+        "signature": "balanceOf(address)",
+        "selector": "70a08231",
+        "name": "balanceOf",
+        "inputs": [
+          "address"
+        ],
+        "reason": "account_specific"
+      },
+      {
+        "signature": "calc_token_amount(uint256[2],bool)",
+        "selector": "ed8e84f3",
+        "name": "calc_token_amount",
+        "inputs": [
+          "uint256[2]",
+          "bool"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "calc_withdraw_one_coin(uint256,int128)",
+        "selector": "cc2b27d7",
+        "name": "calc_withdraw_one_coin",
+        "inputs": [
+          "uint256",
+          "int128"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "get_dy(int128,int128,uint256)",
+        "selector": "5e0d443f",
+        "name": "get_dy",
+        "inputs": [
+          "int128",
+          "int128",
+          "uint256"
+        ],
+        "reason": "quote_or_simulation"
+      },
+      {
+        "signature": "nonces(address)",
+        "selector": "7ecebe00",
+        "name": "nonces",
+        "inputs": [
+          "address"
+        ],
+        "reason": "account_specific"
+      }
+    ],
+    "unknown_view_functions": []
+  }
 }

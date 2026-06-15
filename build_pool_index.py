@@ -48,6 +48,51 @@ ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 NATIVE_ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
 DEPLOY_POOL_FUNCTION_NAMES = {"deploy_pool", "deploy_plain_pool", "deploy_metapool"}
 
+QUOTE_OR_SIMULATION_SKIP_NAMES = {
+    "get_dy",
+    "get_dy_underlying",
+    "get_dx",
+    "get_dx_underlying",
+    "calc_withdraw_one_coin",
+    "calc_withdraw_fixed_out",
+    "calc_token_amount",
+    "calc_token_fee",
+    "fee_calc",
+    "get_twap_balances",
+}
+ACCOUNT_SPECIFIC_SKIP_NAMES = {
+    "balanceOf",
+    "allowance",
+    "nonces",
+    "lp_allowlist",
+}
+LOADER_SKIP_REASONS = {
+    **{name: "quote_or_simulation" for name in QUOTE_OR_SIMULATION_SKIP_NAMES},
+    **{name: "account_specific" for name in ACCOUNT_SPECIFIC_SKIP_NAMES},
+}
+INDEXED_GETTER_CATEGORIES = {
+    "coins(uint256)": "pool_coin",
+    "coins(int128)": "pool_coin",
+    "balances(uint256)": "pool_balance",
+    "balances(int128)": "pool_balance",
+    "admin_balances(uint256)": "pool_balance",
+    "previous_balances(uint256)": "pool_balance",
+    "oracle(uint256)": "pool_param",
+    "price_scale(uint256)": "pool_param",
+    "price_oracle(uint256)": "pool_param",
+    "last_prices(uint256)": "pool_param",
+    "last_price(uint256)": "pool_param",
+    "ema_price(uint256)": "pool_param",
+    "get_p(uint256)": "pool_param",
+    "base_coins(uint256)": "reference_indexed_state",
+    "BASE_COINS(uint256)": "reference_indexed_state",
+    "underlying_coins(uint256)": "reference_indexed_state",
+    "underlying_coins(int128)": "reference_indexed_state",
+}
+PAIRWISE_GETTER_CATEGORIES = {
+    "dynamic_fee(int128,int128)": "pool_param",
+}
+
 ERC20_STRING_ABI = [
     {"name": "name", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "string"}]},
     {"name": "symbol", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "string"}]},
@@ -172,6 +217,109 @@ def read_json(path, default):
 def write_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, sort_keys=False) + "\n")
+
+
+def abi_types(items):
+    return [item["type"] for item in items]
+
+
+def abi_function_signature(item):
+    return f"{item['name']}({','.join(abi_types(item['inputs']))})"
+
+
+def abi_state_mutability(item):
+    if "stateMutability" in item:
+        return item["stateMutability"]
+    if item["constant"]:
+        return "view"
+    if item["payable"]:
+        return "payable"
+    return "nonpayable"
+
+
+def abi_function_selector(signature):
+    return Web3.keccak(text=signature)[:4].hex()
+
+
+def sort_manifest_entries(entries):
+    return sorted(entries, key=lambda entry: (entry["signature"], entry["name"]))
+
+
+def build_loader_call_manifest(abi):
+    calls = []
+    skipped = []
+    unknown_view_functions = []
+
+    for item in abi:
+        if item["type"] != "function":
+            continue
+        state_mutability = abi_state_mutability(item)
+        if state_mutability not in ("view", "pure"):
+            continue
+
+        name = item["name"]
+        inputs = abi_types(item["inputs"])
+        outputs = abi_types(item["outputs"])
+        signature = abi_function_signature(item)
+        selector = abi_function_selector(signature)
+
+        if name in LOADER_SKIP_REASONS:
+            skipped.append({
+                "signature": signature,
+                "selector": selector,
+                "name": name,
+                "inputs": inputs,
+                "reason": LOADER_SKIP_REASONS[name],
+            })
+        elif not inputs:
+            calls.append({
+                "signature": signature,
+                "selector": selector,
+                "name": name,
+                "inputs": inputs,
+                "outputs": outputs,
+                "stateMutability": state_mutability,
+                "arg_policy": "none",
+                "category": "pool_param",
+            })
+        elif signature in INDEXED_GETTER_CATEGORIES:
+            calls.append({
+                "signature": signature,
+                "selector": selector,
+                "name": name,
+                "inputs": inputs,
+                "outputs": outputs,
+                "stateMutability": state_mutability,
+                "arg_policy": "range:n_coins",
+                "category": INDEXED_GETTER_CATEGORIES[signature],
+            })
+        elif signature in PAIRWISE_GETTER_CATEGORIES:
+            calls.append({
+                "signature": signature,
+                "selector": selector,
+                "name": name,
+                "inputs": inputs,
+                "outputs": outputs,
+                "stateMutability": state_mutability,
+                "arg_policy": "pairs:n_coins",
+                "category": PAIRWISE_GETTER_CATEGORIES[signature],
+            })
+        else:
+            unknown_view_functions.append({
+                "signature": signature,
+                "selector": selector,
+                "name": name,
+                "inputs": inputs,
+                "outputs": outputs,
+                "stateMutability": state_mutability,
+            })
+
+    return {
+        "generated_at": now_utc(),
+        "calls": sort_manifest_entries(calls),
+        "skipped": sort_manifest_entries(skipped),
+        "unknown_view_functions": sort_manifest_entries(unknown_view_functions),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -1263,6 +1411,9 @@ def write_address_artifact(kind, address, usage):
         "etherscan_source_metadata": source_metadata(source_record.get("raw") or {}),
         **usage_metadata(usage),
     }
+    if kind == "pool_implementations":
+        abi = json.loads((out_dir / "abi.json").read_text())
+        metadata["loader_call_manifest"] = build_loader_call_manifest(abi)
     if fallback:
         metadata.update({
             "source_pool_address": fallback["source_pool_address"],
