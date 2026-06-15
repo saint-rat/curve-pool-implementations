@@ -45,12 +45,24 @@ TRACE_TIMEOUT = "60s"
 
 ETHERSCAN_URL = "https://api.etherscan.io/v2/api"
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
+NATIVE_ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
 DEPLOY_POOL_FUNCTION_NAMES = {"deploy_pool", "deploy_plain_pool", "deploy_metapool"}
+
+ERC20_STRING_ABI = [
+    {"name": "name", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "string"}]},
+    {"name": "symbol", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "string"}]},
+    {"name": "decimals", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "uint8"}]},
+]
+ERC20_BYTES32_ABI = [
+    {"name": "name", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "bytes32"}]},
+    {"name": "symbol", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "bytes32"}]},
+]
 
 ABI_CACHE = {}
 ABI_SOURCES = {}
 ABI_STATUSES = {}
 SOURCE_CACHE = {}
+TOKEN_METADATA_CACHE = {}
 ABI_COUNTS = Counter()
 SOURCE_COUNTS = Counter()
 BLOCK_TIMESTAMPS = {}
@@ -85,8 +97,16 @@ def now_utc():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def now_utc_plain():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+
+
 def utc_datetime(timestamp):
     return datetime.fromtimestamp(int(timestamp), tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def utc_datetime_plain(timestamp):
+    return datetime.fromtimestamp(int(timestamp), tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def as_hex(value):
@@ -218,19 +238,74 @@ def record_function(record):
     return details.get("function")
 
 
-def compact_pool_record(record):
+def record_deployment_block_number(record):
+    details = record.get("deployment_details") or {}
+    block_number = details.get("blockNumber")
+    return int(block_number) if block_number is not None else None
+
+
+def compact_deployment_details(details):
     compact = {
-        "pool_address": record.get("pool_address"),
-        "listed_in_factories": list(record.get("listed_in_factories") or []),
-        "factory_list_index_by_factory": dict(record.get("factory_list_index_by_factory") or {}),
+        key: details[key]
+        for key in ("factory", "txHash", "blockNumber", "timestamp", "block_datetime", "block_datetime_utc", "function")
+        if key in details and details[key] is not None
     }
+    if compact.get("timestamp") is not None:
+        compact.setdefault("block_datetime", utc_datetime(compact["timestamp"]))
+        compact.setdefault("block_datetime_utc", utc_datetime_plain(compact["timestamp"]))
+    if "args" in details and details["args"] is not None:
+        compact["args"] = dict(details["args"] or {})
+    return compact
+
+
+DERIVED_POOL_FIELDS = (
+    "name",
+    "symbol",
+    "coins",
+    "underlying_coins",
+    "n_coins",
+    "base_pool_address",
+    "is_meta_pool",
+    "pool_type",
+    "registry_id",
+    "implementation_type",
+    "asset_type",
+    "asset_type_name",
+    "asset_types",
+    "initial_A",
+    "fee",
+    "admin_fee",
+    "gamma",
+    "mid_fee",
+    "out_fee",
+    "allowed_extra_profit",
+    "fee_gamma",
+    "adjustment_step",
+    "offpeg_fee_multiplier",
+    "ma_exp_time",
+    "ma_half_time",
+    "method_id",
+    "method_ids",
+    "oracle",
+    "oracles",
+    "weth_address",
+    "initial_price",
+    "initial_prices",
+)
+
+
+def compact_pool_record(record):
+    compact = {"pool_address": record.get("pool_address")}
+
+    for field in DERIVED_POOL_FIELDS:
+        if field in record and record[field] is not None:
+            compact[field] = record[field]
+
+    compact["listed_in_factories"] = list(record.get("listed_in_factories") or [])
+    compact["factory_list_index_by_factory"] = dict(record.get("factory_list_index_by_factory") or {})
 
     if record.get("deployment_details"):
-        compact["deployment_details"] = {
-            key: record["deployment_details"][key]
-            for key in ("factory", "txHash", "blockNumber", "timestamp", "block_datetime", "function", "args")
-            if key in record["deployment_details"] and record["deployment_details"][key] is not None
-        }
+        compact["deployment_details"] = compact_deployment_details(record["deployment_details"])
 
     for field in (
         "lp_token_address",
@@ -263,7 +338,9 @@ def summarize_output(output, factories):
     views = {lower_address(record.get("views_implementation_address")) for record in records if record.get("views_implementation_address")}
 
     output["metadata"] = {
+        "schema_version": 2,
         "generated_at": now_utc(),
+        "generated_at_utc": now_utc_plain(),
         "rpc_url": RPC_URL,
         "chain_id": CHAIN_ID,
         "factory_count": len(factories),
@@ -422,6 +499,203 @@ def block_timestamp(w3, block_number):
     if block_number not in BLOCK_TIMESTAMPS:
         BLOCK_TIMESTAMPS[block_number] = int(w3.eth.get_block(block_number)["timestamp"])
     return BLOCK_TIMESTAMPS[block_number]
+
+
+def clean_token_text(value):
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return value.rstrip("\x00").strip() or None
+    if isinstance(value, (bytes, bytearray)) or value.__class__.__name__ == "HexBytes":
+        return bytes(value).rstrip(b"\x00").decode("utf-8", errors="replace").strip() or None
+    return str(value).strip() or None
+
+
+def erc20_text(w3, address, fn_name, block_number=None):
+    for abi in (ERC20_STRING_ABI, ERC20_BYTES32_ABI):
+        contract = contract_for(w3, address, abi)
+        value, error = safe_call_contract(contract, fn_name, [], block_number)
+        if not error:
+            return clean_token_text(value)
+    return None
+
+
+def token_metadata(w3, address, block_number=None):
+    address = normalize_address(address)
+    if not address:
+        return {}
+    if address.lower() == NATIVE_ETH_ADDRESS.lower():
+        return {"symbol": "ETH", "name": "Ether", "decimals": "18"}
+
+    key = address.lower()
+    if key not in TOKEN_METADATA_CACHE:
+        contract = contract_for(w3, address, ERC20_STRING_ABI)
+        decimals, error = safe_call_contract(contract, "decimals", [], block_number)
+        TOKEN_METADATA_CACHE[key] = {
+            "symbol": erc20_text(w3, address, "symbol", block_number),
+            "name": erc20_text(w3, address, "name", block_number),
+            "decimals": str(decimals) if not error and decimals is not None else None,
+        }
+    return dict(TOKEN_METADATA_CACHE[key])
+
+
+def deployment_args(record):
+    return (record.get("deployment_details") or {}).get("args") or {}
+
+
+def arg(args, *names):
+    for name in names:
+        if name in args:
+            return args[name]
+    return None
+
+
+def set_value(record, field, value):
+    if value is not None:
+        record[field] = value
+
+
+def make_coin(w3, value, block_number=None, is_base_pool_lp_token=False):
+    existing = value if isinstance(value, dict) else {}
+    address = normalize_address(existing.get("address") if existing else value)
+    if not address:
+        return None
+
+    missing_metadata = any(existing.get(key) in (None, "") for key in ("symbol", "name", "decimals"))
+    metadata = token_metadata(w3, address, block_number) if missing_metadata else {}
+    decimals = existing.get("decimals") or metadata.get("decimals")
+    return {
+        "address": address,
+        "symbol": existing.get("symbol") or metadata.get("symbol"),
+        "name": existing.get("name") or metadata.get("name"),
+        "decimals": str(decimals) if decimals is not None else None,
+        "isBasePoolLpToken": bool(existing.get("isBasePoolLpToken", is_base_pool_lp_token)),
+    }
+
+
+def make_coins(w3, values, block_number=None, decimals=None):
+    coins = []
+    for index, value in enumerate(values or []):
+        coin = make_coin(w3, value, block_number)
+        if not coin:
+            continue
+        if coin.get("decimals") is None and decimals and index < len(decimals):
+            coin["decimals"] = str(decimals[index])
+        coins.append(coin)
+    return coins
+
+
+def pool_base_address(record):
+    args = deployment_args(record)
+    return normalize_address(args.get("_base_pool") or record.get("base_pool_address"))
+
+
+def pool_coins(w3, record, records_by_pool):
+    args = deployment_args(record)
+    block_number = record_deployment_block_number(record)
+
+    if record.get("coins"):
+        return make_coins(w3, record["coins"], block_number, args.get("_decimals"))
+
+    if args.get("_coin") and pool_base_address(record):
+        base_pool = pool_base_address(record)
+        base_record = records_by_pool.get(lower_address(base_pool), {})
+        base_lp_token = base_record.get("lp_token_address") or base_pool
+        return [
+            coin for coin in (
+                make_coin(w3, args["_coin"], block_number),
+                make_coin(w3, base_lp_token, block_number, is_base_pool_lp_token=True),
+            ) if coin
+        ]
+
+    return make_coins(w3, args.get("_coins") or [], block_number, args.get("_decimals"))
+
+
+def underlying_coins(w3, record, records_by_pool):
+    block_number = record_deployment_block_number(record)
+    if record.get("underlying_coins"):
+        return make_coins(w3, record["underlying_coins"], block_number)
+
+    base_pool = pool_base_address(record)
+    if not base_pool:
+        return None
+
+    meta_coins = [coin for coin in record.get("coins", []) if not coin.get("isBasePoolLpToken")]
+    base_record = records_by_pool.get(lower_address(base_pool), {})
+    base_coins = base_record.get("underlying_coins") or base_record.get("coins") or []
+    return meta_coins + make_coins(w3, base_coins, block_number)
+
+
+def fill_pool_metadata(w3, record, records_by_pool):
+    args = deployment_args(record)
+    details = record.get("deployment_details") or {}
+    if details.get("timestamp") is not None:
+        details["block_datetime"] = utc_datetime(details["timestamp"])
+        details["block_datetime_utc"] = utc_datetime_plain(details["timestamp"])
+
+    set_value(record, "name", args.get("_name"))
+    set_value(record, "symbol", args.get("_symbol"))
+
+    coins = pool_coins(w3, record, records_by_pool)
+    if coins:
+        record["coins"] = coins
+        record["n_coins"] = len(coins)
+
+    set_value(record, "base_pool_address", pool_base_address(record))
+    if "is_meta_pool" not in record:
+        record["is_meta_pool"] = bool(record.get("base_pool_address") or record_function(record) == "deploy_metapool")
+
+    if args.get("poolType") is not None:
+        record["pool_type"] = args["poolType"]
+    elif record.get("pool_type") is None:
+        record["pool_type"] = {
+            "deploy_metapool": "stableswap_meta",
+            "deploy_plain_pool": "stableswap_plain",
+            "deploy_pool": "cryptoswap",
+        }.get(record_function(record))
+
+    set_value(record, "registry_id", args.get("registryId"))
+    if args.get("implementationType") is not None:
+        record["implementation_type"] = args["implementationType"]
+    elif not record.get("listed_in_factories") and record_function(record) == "direct_constructor_unparsed":
+        record["implementation_type"] = "direct"
+    elif record.get("implementation_type") is None and record.get("listed_in_factories"):
+        record["implementation_type"] = "factory"
+
+    set_value(record, "asset_type", arg(args, "_asset_type", "assetType"))
+    set_value(record, "asset_type_name", args.get("assetTypeName"))
+    set_value(record, "asset_types", args.get("_asset_types"))
+    set_value(record, "initial_A", arg(args, "_A", "A", "amplificationCoefficient"))
+    set_value(record, "fee", args.get("_fee"))
+    set_value(record, "admin_fee", args.get("admin_fee"))
+    set_value(record, "gamma", args.get("gamma"))
+    set_value(record, "mid_fee", args.get("mid_fee"))
+    set_value(record, "out_fee", args.get("out_fee"))
+    set_value(record, "allowed_extra_profit", args.get("allowed_extra_profit"))
+    set_value(record, "fee_gamma", args.get("fee_gamma"))
+    set_value(record, "adjustment_step", args.get("adjustment_step"))
+    set_value(record, "offpeg_fee_multiplier", args.get("_offpeg_fee_multiplier"))
+    set_value(record, "ma_exp_time", arg(args, "_ma_exp_time", "ma_exp_time"))
+    set_value(record, "ma_half_time", args.get("ma_half_time"))
+    set_value(record, "method_id", args.get("_method_id"))
+    set_value(record, "method_ids", args.get("_method_ids"))
+    set_value(record, "oracle", args.get("_oracle"))
+    set_value(record, "oracles", args.get("_oracles"))
+    set_value(record, "weth_address", normalize_address(args.get("_weth")) if args.get("_weth") else None)
+    set_value(record, "initial_price", args.get("initial_price"))
+    set_value(record, "initial_prices", args.get("initial_prices"))
+
+
+def refresh_pool_derived_fields(w3, output):
+    records_by_pool = pool_records_by_address(output)
+    for record in output.get("pools", []):
+        fill_pool_metadata(w3, record, records_by_pool)
+
+    records_by_pool = pool_records_by_address(output)
+    for record in output.get("pools", []):
+        coins = underlying_coins(w3, record, records_by_pool)
+        if coins:
+            record["underlying_coins"] = coins
 
 
 def decode_calldata(w3, to_address, input_hex):
@@ -830,17 +1104,87 @@ def collect_usage(records, field):
                 "first_seen_factory": record_factory(record),
                 "first_seen_block": record_block_number(record),
                 "example_pools": [],
+                "pool_addresses": [],
             },
         )
+        pool_address = record.get("pool_address")
         item["used_by_pool_count"] += 1
+        if pool_address:
+            item["pool_addresses"].append(pool_address)
         if len(item["example_pools"]) < 5:
-            item["example_pools"].append(record.get("pool_address"))
+            item["example_pools"].append(pool_address)
         block_number = record_block_number(record)
         if block_number < item["first_seen_block"]:
             item["first_seen_block"] = block_number
-            item["first_seen_pool"] = record.get("pool_address")
+            item["first_seen_pool"] = pool_address
             item["first_seen_factory"] = record_factory(record)
     return usage
+
+
+def usage_metadata(usage):
+    keys = [
+        "used_by_pool_count",
+        "first_seen_pool",
+        "first_seen_factory",
+        "first_seen_block",
+        "example_pools",
+    ]
+    return {key: usage[key] for key in keys if key in usage}
+
+
+def source_compare_key(source_record):
+    raw = source_record.get("raw") or {}
+    abi_text = raw.get("ABI") or ""
+    try:
+        abi_key = json.dumps(json.loads(abi_text), sort_keys=True, separators=(",", ":"))
+    except Exception:
+        abi_key = abi_text.strip()
+    source_code = (raw.get("SourceCode") or "").replace("\r\n", "\n").replace("\r", "\n")
+    return (
+        source_code,
+        abi_key,
+        raw.get("ContractName") or "",
+        raw.get("CompilerVersion") or "",
+        raw.get("OptimizationUsed") or "",
+        raw.get("Runs") or "",
+        raw.get("EVMVersion") or "",
+    )
+
+
+def pool_source_fallback(usage):
+    pools = usage.get("pool_addresses") or usage.get("example_pools") or []
+    checked = []
+    unverified = []
+    mismatched = []
+    first_pool = None
+    first_record = None
+    first_key = None
+
+    for pool in pools:
+        pool = normalize_address(pool)
+        if not pool:
+            continue
+        record = get_source(pool)
+        if record.get("status") != "verified":
+            unverified.append(pool)
+            continue
+        key = source_compare_key(record)
+        checked.append(pool)
+        if first_record is None:
+            first_pool = pool
+            first_record = record
+            first_key = key
+        elif key != first_key:
+            mismatched.append(pool)
+
+    if not first_record or mismatched:
+        return None
+    return {
+        "source_record": first_record,
+        "source_pool_address": first_pool,
+        "checked_pool_addresses": checked,
+        "unverified_pool_addresses": unverified,
+    }
 
 
 def artifact_is_complete(kind, address):
@@ -887,6 +1231,15 @@ def write_address_artifact(kind, address, usage):
 
     source_record = get_source(address)
     source_status = source_record.get("status")
+    source_source = "etherscan_getsourcecode"
+    fallback = None
+    if kind == "pool_implementations" and source_status != "verified":
+        fallback = pool_source_fallback(usage)
+        if fallback:
+            source_record = fallback["source_record"]
+            source_status = source_record.get("status")
+            source_source = f"etherscan_getsourcecode_pool:{fallback['source_pool_address']}"
+
     source_files = []
     if source_status == "verified":
         source_files = write_source_files(out_dir, source_record)
@@ -894,6 +1247,9 @@ def write_address_artifact(kind, address, usage):
         shutil.rmtree(out_dir / "source")
 
     abi_status, abi_source = write_abi(out_dir, address, source_record)
+    if fallback and abi_status == "source_getsourcecode":
+        abi_source = source_source
+
     metadata = {
         "address": address,
         "kind": kind.rstrip("s"),
@@ -901,12 +1257,19 @@ def write_address_artifact(kind, address, usage):
         "abi_status": abi_status,
         "abi_source": abi_source,
         "source_status": source_status,
-        "source_source": "etherscan_getsourcecode",
+        "source_source": source_source,
         "source_files": source_files,
         "source_file_count": len(source_files),
         "etherscan_source_metadata": source_metadata(source_record.get("raw") or {}),
-        **usage,
+        **usage_metadata(usage),
     }
+    if fallback:
+        metadata.update({
+            "source_pool_address": fallback["source_pool_address"],
+            "source_pool_count_checked": len(fallback["checked_pool_addresses"]),
+            "source_pool_addresses_checked": fallback["checked_pool_addresses"],
+            "source_pool_unverified_addresses": fallback["unverified_pool_addresses"],
+        })
     write_json(out_dir / "metadata.json", metadata)
     return {
         "address": address,
@@ -983,6 +1346,7 @@ def build_pool_record(w3, pool_address, listed_factory, factory_index, factory_s
         "blockNumber": str(block_number),
         "timestamp": str(timestamp),
         "block_datetime": utc_datetime(timestamp),
+        "block_datetime_utc": utc_datetime_plain(timestamp),
         "function": function_name,
         "args": args,
     }
@@ -1008,6 +1372,7 @@ def process_factory(w3, factory, output, processed_indices, records_by_pool, fac
         "abi_status": ABI_STATUSES.get(factory.lower()),
         "abi_source": ABI_SOURCES.get(factory.lower()),
         "last_scanned_at": now_utc(),
+        "last_scanned_at_utc": now_utc_plain(),
     }
 
     changed = 0
@@ -1084,6 +1449,10 @@ def main():
         log(f"hardcoded pools merged: added={hardcoded_added} "
             f"skipped_duplicates={len(hardcoded_data.get('pools', [])) - hardcoded_added}")
         save_output(output, factories)
+
+    log("refreshing pool derived fields")
+    refresh_pool_derived_fields(w3, output)
+    save_output(output, factories)
 
     views_changed = refresh_current_views_implementations(w3, output)
     if views_changed:

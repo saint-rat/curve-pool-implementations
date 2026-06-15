@@ -1,18 +1,11 @@
 {
   "address": "0xDD7EBB1C49780519dD9755B8B1A23a6f42CE099E",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T01:58:50Z",
+  "written_at": "2026-06-15T05:30:45Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode_pool:0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
   "source_status": "verified",
   "source_source": "etherscan_getsourcecode_pool:0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
-  "source_pool_address": "0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
-  "source_pool_count_checked": 3,
-  "source_pool_addresses_checked": [
-    "0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
-    "0xc273fd237F23cb13296D0Cc2897F0B7A61e83387",
-    "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E"
-  ],
   "source_files": [
     "source/CurveStableSwapMetaNG.vy"
   ],
@@ -38,5 +31,13 @@
     "0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
     "0xc273fd237F23cb13296D0Cc2897F0B7A61e83387",
     "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E"
-  ]
+  ],
+  "source_pool_address": "0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
+  "source_pool_count_checked": 3,
+  "source_pool_addresses_checked": [
+    "0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
+    "0xc273fd237F23cb13296D0Cc2897F0B7A61e83387",
+    "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E"
+  ],
+  "source_pool_unverified_addresses": []
 }

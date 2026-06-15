@@ -1,17 +1,11 @@
 {
   "address": "0x64AFA95e0C3D8410240a4262df9Fd82B12b64eDd",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T01:58:46Z",
+  "written_at": "2026-06-15T05:29:57Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode_pool:0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
   "source_status": "verified",
   "source_source": "etherscan_getsourcecode_pool:0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
-  "source_pool_address": "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
-  "source_pool_count_checked": 2,
-  "source_pool_addresses_checked": [
-    "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
-    "0xAC4Abe9bD07F0ea3b3078880A73f5b3BC4B396e7"
-  ],
   "source_files": [
     "source/CurveStableSwapMetaNG.vy"
   ],
@@ -36,5 +30,12 @@
   "example_pools": [
     "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
     "0xAC4Abe9bD07F0ea3b3078880A73f5b3BC4B396e7"
-  ]
+  ],
+  "source_pool_address": "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
+  "source_pool_count_checked": 2,
+  "source_pool_addresses_checked": [
+    "0x76Ae7A7DC125E4163a2137e650b7726231FdB917",
+    "0xAC4Abe9bD07F0ea3b3078880A73f5b3BC4B396e7"
+  ],
+  "source_pool_unverified_addresses": []
 }

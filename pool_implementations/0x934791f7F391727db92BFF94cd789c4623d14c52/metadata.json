@@ -1,7 +1,7 @@
 {
   "address": "0x934791f7F391727db92BFF94cd789c4623d14c52",
   "kind": "pool_implementation",
-  "written_at": "2026-06-10T13:13:03Z",
+  "written_at": "2026-06-15T05:30:11Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -23,7 +23,7 @@
     "Implementation": "",
     "SwarmSource": ""
   },
-  "used_by_pool_count": 314,
+  "used_by_pool_count": 315,
   "first_seen_pool": "0x1314b41A5Bc05995EB4A6eAF41A080DB8776D26D",
   "first_seen_factory": "0x98EE851a00abeE0d95D08cF4CA2BdCE32aeaAF7F",
   "first_seen_block": 20092640,
