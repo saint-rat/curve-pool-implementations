@@ -89,6 +89,18 @@ INDEXED_GETTER_CATEGORIES = {
     "underlying_coins(uint256)": "reference_indexed_state",
     "underlying_coins(int128)": "reference_indexed_state",
 }
+N_COINS_MINUS_1_GETTERS = {
+    "price_scale(uint256)",
+    "price_oracle(uint256)",
+    "last_prices(uint256)",
+    "last_price(uint256)",
+    "ema_price(uint256)",
+    "get_p(uint256)",
+}
+BASE_N_COINS_GETTERS = {
+    "base_coins(uint256)",
+    "BASE_COINS(uint256)",
+}
 PAIRWISE_GETTER_CATEGORIES = {
     "dynamic_fee(int128,int128)": "pool_param",
 }
@@ -283,6 +295,12 @@ def build_loader_call_manifest(abi):
                 "category": "pool_param",
             })
         elif signature in INDEXED_GETTER_CATEGORIES:
+            if signature in N_COINS_MINUS_1_GETTERS:
+                arg_policy = "range:n_coins_minus_1"
+            elif signature in BASE_N_COINS_GETTERS:
+                arg_policy = "range:base_n_coins"
+            else:
+                arg_policy = "range:n_coins"
             calls.append({
                 "signature": signature,
                 "selector": selector,
@@ -290,7 +308,7 @@ def build_loader_call_manifest(abi):
                 "inputs": inputs,
                 "outputs": outputs,
                 "stateMutability": state_mutability,
-                "arg_policy": "range:n_coins",
+                "arg_policy": arg_policy,
                 "category": INDEXED_GETTER_CATEGORIES[signature],
             })
         elif signature in PAIRWISE_GETTER_CATEGORIES:

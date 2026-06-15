@@ -1,7 +1,7 @@
 {
   "address": "0x8F68f4810CcE3194B6cB6F3d50fa58c2c9bDD1d5",
   "kind": "math_implementation",
-  "written_at": "2026-06-15T08:17:20Z",
+  "written_at": "2026-06-15T10:20:45Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",

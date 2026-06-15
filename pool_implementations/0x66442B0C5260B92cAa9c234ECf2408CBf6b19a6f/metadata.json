@@ -1,7 +1,7 @@
 {
   "address": "0x66442B0C5260B92cAa9c234ECf2408CBf6b19a6f",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T08:41:06Z",
+  "written_at": "2026-06-15T10:19:45Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -35,7 +35,7 @@
     "0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14"
   ],
   "loader_call_manifest": {
-    "generated_at": "2026-06-15T08:41:06Z",
+    "generated_at": "2026-06-15T10:19:45Z",
     "calls": [
       {
         "signature": "A()",
@@ -316,7 +316,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
@@ -438,7 +438,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
@@ -452,7 +452,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {

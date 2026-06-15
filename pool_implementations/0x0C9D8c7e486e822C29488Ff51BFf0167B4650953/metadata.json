@@ -1,7 +1,7 @@
 {
   "address": "0x0C9D8c7e486e822C29488Ff51BFf0167B4650953",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T08:40:24Z",
+  "written_at": "2026-06-15T10:19:03Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -32,7 +32,7 @@
     "0xAcfFeB3DD13Ca770976deB3deaD62D4Eb5cf0ac4"
   ],
   "loader_call_manifest": {
-    "generated_at": "2026-06-15T08:40:24Z",
+    "generated_at": "2026-06-15T10:19:03Z",
     "calls": [
       {
         "signature": "A()",

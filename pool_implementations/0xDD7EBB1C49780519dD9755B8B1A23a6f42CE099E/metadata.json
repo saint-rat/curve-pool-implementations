@@ -1,7 +1,7 @@
 {
   "address": "0xDD7EBB1C49780519dD9755B8B1A23a6f42CE099E",
   "kind": "pool_implementation",
-  "written_at": "2026-06-15T08:41:52Z",
+  "written_at": "2026-06-15T10:20:31Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode_pool:0x1a5C82B77cE33Cf5ce87efE5eCdb33f7591B35aa",
   "source_status": "verified",
@@ -33,7 +33,7 @@
     "0xC83b79C07ECE44b8b99fFa0E235C00aDd9124f9E"
   ],
   "loader_call_manifest": {
-    "generated_at": "2026-06-15T08:41:52Z",
+    "generated_at": "2026-06-15T10:20:31Z",
     "calls": [
       {
         "signature": "A()",
@@ -70,7 +70,7 @@
           "address"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:base_n_coins",
         "category": "reference_indexed_state"
       },
       {
@@ -237,7 +237,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
@@ -299,7 +299,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
@@ -349,7 +349,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
@@ -411,7 +411,7 @@
           "uint256"
         ],
         "stateMutability": "view",
-        "arg_policy": "range:n_coins",
+        "arg_policy": "range:n_coins_minus_1",
         "category": "pool_param"
       },
       {
