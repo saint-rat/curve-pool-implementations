@@ -1,5 +1,7 @@
 import json
+import math
 import os
+import re
 import shutil
 import time
 from collections import Counter, defaultdict
@@ -27,6 +29,21 @@ FACTORIES = [
     "0xF18056Bbd320E96A48e3Fbf8bC061322531aac99",
 ]
 
+LENDING_MARKET_FACTORIES = [
+    {
+        "address": "0xC9332fdCB1C491Dcc683bAe86Fe3cb70360738BC",
+        "factory_type": "crvusd_controller_factory",
+        "market_count_function": "n_collaterals",
+        "amm_implementation_function": "amm_implementation",
+    },
+    {
+        "address": "0xeA6876DDE9e3467564acBeE1Ed5bac88783205E0",
+        "factory_type": "one_way_lending_factory",
+        "market_count_function": "market_count",
+        "amm_implementation_function": "amm_impl",
+    },
+]
+
 OUTPUT_PATH = Path("pool_index.json")
 HARD_CODED_PATH = Path("hardcoded_pool_deployment_index.json")
 CACHE_DIR = Path("cache")
@@ -47,6 +64,7 @@ ETHERSCAN_URL = "https://api.etherscan.io/v2/api"
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 NATIVE_ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
 DEPLOY_POOL_FUNCTION_NAMES = {"deploy_pool", "deploy_plain_pool", "deploy_metapool"}
+LENDING_MARKET_CREATE_FUNCTION_NAMES = {"add_market", "create", "create_from_pool"}
 
 QUOTE_OR_SIMULATION_SKIP_NAMES = {
     "get_dy",
@@ -66,10 +84,6 @@ ACCOUNT_SPECIFIC_SKIP_NAMES = {
     "nonces",
     "lp_allowlist",
 }
-LOADER_SKIP_REASONS = {
-    **{name: "quote_or_simulation" for name in QUOTE_OR_SIMULATION_SKIP_NAMES},
-    **{name: "account_specific" for name in ACCOUNT_SPECIFIC_SKIP_NAMES},
-}
 INDEXED_GETTER_CATEGORIES = {
     "coins(uint256)": "pool_coin",
     "coins(int128)": "pool_coin",
@@ -88,6 +102,9 @@ INDEXED_GETTER_CATEGORIES = {
     "BASE_COINS(uint256)": "reference_indexed_state",
     "underlying_coins(uint256)": "reference_indexed_state",
     "underlying_coins(int128)": "reference_indexed_state",
+    "bands_x(int256)": "pool_balance",
+    "bands_y(int256)": "pool_balance",
+    "p_oracle_up(int256)": "pool_param",
 }
 N_COINS_MINUS_1_GETTERS = {
     "price_scale(uint256)",
@@ -104,6 +121,120 @@ BASE_N_COINS_GETTERS = {
 PAIRWISE_GETTER_CATEGORIES = {
     "dynamic_fee(int128,int128)": "pool_param",
 }
+LLAMMA_BAND_GETTERS = {
+    "bands_x(int256)",
+    "bands_y(int256)",
+}
+LLAMMA_ACTIVE_BAND_GETTERS = {
+    "p_oracle_up(int256)",
+}
+
+JS_SAFE_INTEGER = 9007199254740991
+STATE_CONSTANT_NAMES = {
+    "N_COINS",
+    "MAX_COIN",
+    "PRECISION",
+    "FEE_DENOMINATOR",
+    "A_PRECISION",
+    "PRECISION_MUL",
+    "RATES",
+    "USE_LENDING",
+    "LENDING_PRECISION",
+    "BASE_CACHE_EXPIRES",
+    "BASE_POOL",
+}
+LEGACY_BASE_VP_IMPLEMENTATIONS = {
+    "0x008cfa89df5b0c780ca3462fc2602d7f8c7ac315",
+    "0x071c661b4deefb59e2a3ddb20db036821eee8f4b",
+    "0x0f9cb53ebe405d49a0bbdbd291a65ff571bc83e1",
+    "0x213be373fdff327658139c7df330817dad2d5bbe",
+    "0x2f956eee002b0debd468cf2e0490d1aec65e027f",
+    "0x33bb0e62d5e8c688e645dd46dfb48cd613250067",
+    "0x3ef6a01a0f81d6046290f3e2a8c5b843e738e604",
+    "0x42d7025938bec20b69cbae5a77421082407f053a",
+    "0x4f062658eaaf2c1ccf8c8e36d6824cdf41167956",
+    "0x55aa9bf126bcabf0bdc17fa9e39ec9239e1ce7a9",
+    "0x5f890841f657d90e081babdb532a05996af79fe6",
+    "0x618788357d0ebd8a37e763adab3bc575d54c2c7d",
+    "0x890f4e345b1daed0367a877a1612f86a1f86985f",
+    "0xc25099792e9349c7dd09759744ea681c7de2cb66",
+    "0xc6a8466d128fbfd34ada64a9fffce325d57c9a52",
+}
+BROKEN_PRIVATE_RATE_IMPLEMENTATIONS = {
+    "0x0c9d8c7e486e822c29488ff51bff0167b4650953",
+}
+PRIVATE_RATE_OVERRIDES = {
+    "0x06364f10b501e868329afbc005b3492902d6c763": [
+        ("rates.0.getPricePerFullShare", "coins[0].address", "getPricePerFullShare()"),
+        ("rates.1.getPricePerFullShare", "coins[1].address", "getPricePerFullShare()"),
+        ("rates.2.getPricePerFullShare", "coins[2].address", "getPricePerFullShare()"),
+    ],
+    "0x45f783cce6b7ff23b2ab2d70e416cdb7d6055f51": [
+        ("rates.0.getPricePerFullShare", "coins[0].address", "getPricePerFullShare()"),
+        ("rates.1.getPricePerFullShare", "coins[1].address", "getPricePerFullShare()"),
+        ("rates.2.getPricePerFullShare", "coins[2].address", "getPricePerFullShare()"),
+        ("rates.3.getPricePerFullShare", "coins[3].address", "getPricePerFullShare()"),
+    ],
+    "0x79a8c46dea5ada233abaffd40f3a0a2b1e5a4f27": [
+        ("rates.0.getPricePerFullShare", "coins[0].address", "getPricePerFullShare()"),
+        ("rates.1.getPricePerFullShare", "coins[1].address", "getPricePerFullShare()"),
+        ("rates.2.getPricePerFullShare", "coins[2].address", "getPricePerFullShare()"),
+        ("rates.3.getPricePerFullShare", "coins[3].address", "getPricePerFullShare()"),
+    ],
+    "0x2dded6da1bf5dbdf597c45fcfaa3194e53ecfeaf": [
+        ("rates.0.exchangeRateStored", "coins[0].address", "exchangeRateStored()"),
+        ("rates.0.supplyRatePerBlock", "coins[0].address", "supplyRatePerBlock()"),
+        ("rates.0.accrualBlockNumber", "coins[0].address", "accrualBlockNumber()"),
+        ("rates.0.exchangeRateCurrent", "coins[0].address", "exchangeRateCurrent()"),
+        ("rates.1.exchangeRateStored", "coins[1].address", "exchangeRateStored()"),
+        ("rates.1.supplyRatePerBlock", "coins[1].address", "supplyRatePerBlock()"),
+        ("rates.1.accrualBlockNumber", "coins[1].address", "accrualBlockNumber()"),
+        ("rates.1.exchangeRateCurrent", "coins[1].address", "exchangeRateCurrent()"),
+        ("rates.2.exchangeRateStored", "coins[2].address", "exchangeRateStored()"),
+        ("rates.2.supplyRatePerBlock", "coins[2].address", "supplyRatePerBlock()"),
+        ("rates.2.accrualBlockNumber", "coins[2].address", "accrualBlockNumber()"),
+        ("rates.2.exchangeRateCurrent", "coins[2].address", "exchangeRateCurrent()"),
+    ],
+    "0x52ea46506b9cc5ef470c5bf89f17dc28bb35d85c": [
+        ("rates.0.exchangeRateStored", "coins[0].address", "exchangeRateStored()"),
+        ("rates.0.supplyRatePerBlock", "coins[0].address", "supplyRatePerBlock()"),
+        ("rates.0.accrualBlockNumber", "coins[0].address", "accrualBlockNumber()"),
+        ("rates.0.exchangeRateCurrent", "coins[0].address", "exchangeRateCurrent()"),
+        ("rates.1.exchangeRateStored", "coins[1].address", "exchangeRateStored()"),
+        ("rates.1.supplyRatePerBlock", "coins[1].address", "supplyRatePerBlock()"),
+        ("rates.1.accrualBlockNumber", "coins[1].address", "accrualBlockNumber()"),
+        ("rates.1.exchangeRateCurrent", "coins[1].address", "exchangeRateCurrent()"),
+    ],
+    "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714": [
+        ("rates.0.exchangeRateCurrent", "coins[0].address", "exchangeRateCurrent()"),
+    ],
+    "0x93054188d876f558f4a66b2ef1d97d16edf0895b": [
+        ("rates.0.exchangeRateCurrent", "coins[0].address", "exchangeRateCurrent()"),
+    ],
+    "0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56": [
+        ("rates.0.exchangeRateStored", "coins[0].address", "exchangeRateStored()"),
+        ("rates.0.supplyRatePerBlock", "coins[0].address", "supplyRatePerBlock()"),
+        ("rates.0.accrualBlockNumber", "coins[0].address", "accrualBlockNumber()"),
+        ("rates.0.exchangeRateCurrent", "coins[0].address", "exchangeRateCurrent()"),
+        ("rates.1.exchangeRateStored", "coins[1].address", "exchangeRateStored()"),
+        ("rates.1.supplyRatePerBlock", "coins[1].address", "supplyRatePerBlock()"),
+        ("rates.1.accrualBlockNumber", "coins[1].address", "accrualBlockNumber()"),
+        ("rates.1.exchangeRateCurrent", "coins[1].address", "exchangeRateCurrent()"),
+    ],
+    "0xa96a65c051bf88b4095ee1f2451c2a9d43f53ae2": [
+        ("rates.1.ratio", "coins[1].address", "ratio()"),
+    ],
+    "0xf9440930043eb3997fc70e1339dbb11f341de7a8": [
+        ("rates.1.getExchangeRate", "coins[1].address", "getExchangeRate()"),
+    ],
+}
+PRIVATE_RATE_CONSTANT_ONLY_IMPLEMENTATIONS = {
+    "0xa5407eae9ba41422680e2e00537571bcc53efbfd",
+}
+PRIVATE_RATE_IMPLEMENTATIONS = set(PRIVATE_RATE_OVERRIDES) | PRIVATE_RATE_CONSTANT_ONLY_IMPLEMENTATIONS
+PRIVATE_RATE_REQUIRED_CONSTANTS = {
+    "0xa5407eae9ba41422680e2e00537571bcc53efbfd": {"PRECISION_MUL", "USE_LENDING"},
+}
 
 ERC20_STRING_ABI = [
     {"name": "name", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "string"}]},
@@ -113,6 +244,9 @@ ERC20_STRING_ABI = [
 ERC20_BYTES32_ABI = [
     {"name": "name", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "bytes32"}]},
     {"name": "symbol", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "bytes32"}]},
+]
+PRICE_ORACLE_ABI = [
+    {"name": "price", "type": "function", "stateMutability": "view", "inputs": [], "outputs": [{"type": "uint256"}]},
 ]
 
 ABI_CACHE = {}
@@ -254,89 +388,198 @@ def abi_function_selector(signature):
 
 
 def sort_manifest_entries(entries):
-    return sorted(entries, key=lambda entry: (entry["signature"], entry["name"]))
+    return sorted(entries, key=lambda entry: (entry.get("signature", ""), entry["name"]))
 
 
-def build_loader_call_manifest(abi):
+def state_call(name, address_ref, signature, inputs, outputs, arg_policy):
+    return {
+        "name": name,
+        "address_ref": address_ref,
+        "signature": signature,
+        "selector": abi_function_selector(signature),
+        "inputs": inputs,
+        "arg_policy": arg_policy,
+        "outputs": outputs,
+    }
+
+
+def call_arg_policy(signature):
+    if signature in INDEXED_GETTER_CATEGORIES:
+        if signature in N_COINS_MINUS_1_GETTERS:
+            return "range:n_coins_minus_1"
+        if signature in BASE_N_COINS_GETTERS:
+            return "range:base_n_coins"
+        if signature in LLAMMA_BAND_GETTERS:
+            return "range:min_band:max_band"
+        if signature in LLAMMA_ACTIVE_BAND_GETTERS:
+            return "single:active_band"
+        return "range:n_coins"
+    if signature in PAIRWISE_GETTER_CATEGORIES:
+        return "pairs:n_coins"
+    return None
+
+
+def split_list_items(text):
+    items = []
+    start = 0
+    depth = 0
+    for index, char in enumerate(text):
+        if char in "([":
+            depth += 1
+        elif char in ")]":
+            depth -= 1
+        elif char == "," and depth == 0:
+            items.append(text[start:index].strip())
+            start = index + 1
+    last = text[start:].strip()
+    if last:
+        items.append(last)
+    return items
+
+
+def parse_constant_expr(expr, raw_constants):
+    expr = expr.strip()
+    if not expr:
+        return None
+
+    if expr.startswith("[") and expr.endswith("]"):
+        values = [parse_constant_expr(item, raw_constants) for item in split_list_items(expr[1:-1])]
+        return None if any(value is None for value in values) else values
+
+    convert_match = re.fullmatch(r"convert\((.+),\s*[A-Za-z0-9_]+\)", expr)
+    if convert_match:
+        return parse_constant_expr(convert_match.group(1), raw_constants)
+
+    if expr in ("True", "False"):
+        return expr == "True"
+
+    if re.fullmatch(r"0x[a-fA-F0-9]{40}", expr):
+        return normalize_address(expr)
+
+    if re.fullmatch(r"\d[\d_]*", expr):
+        return int(expr.replace("_", ""))
+
+    names = set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", expr))
+    if names:
+        if any(name not in raw_constants or type(raw_constants[name]) is not int for name in names):
+            return None
+    if not re.fullmatch(r"[0-9A-Za-z_\s()+\-*/%]+", expr):
+        return None
+
+    value = eval(expr, {"__builtins__": {}}, {name: raw_constants[name] for name in names})
+    return value if type(value) is int else None
+
+
+def json_constant_value(value):
+    if isinstance(value, bool):
+        return value
+    if type(value) is int:
+        return str(value) if abs(value) > JS_SAFE_INTEGER else value
+    if isinstance(value, list):
+        has_large_int = any(type(item) is int and abs(item) > JS_SAFE_INTEGER for item in value)
+        result = []
+        for item in value:
+            if isinstance(item, bool):
+                result.append(item)
+            elif type(item) is int and has_large_int:
+                result.append(str(item))
+            else:
+                result.append(json_constant_value(item))
+        return result
+    return value
+
+
+def parse_state_constants(source_text):
+    constants = {}
+    raw_constants = {}
+    lines = source_text.splitlines()
+    index = 0
+    constant_re = re.compile(r"^([A-Z][A-Z0-9_]*):\s+(?:public\()?constant\([^)]*\)\)?\s*=\s*(.+)$")
+
+    while index < len(lines):
+        line = lines[index].split("#", 1)[0].strip()
+        match = constant_re.match(line)
+        if not match:
+            index += 1
+            continue
+
+        name, expr = match.groups()
+        while expr.count("[") > expr.count("]") and index + 1 < len(lines):
+            index += 1
+            expr += " " + lines[index].split("#", 1)[0].strip()
+
+        if name in STATE_CONSTANT_NAMES:
+            value = parse_constant_expr(expr, raw_constants)
+            if value is not None:
+                raw_constants[name] = value
+                constants[name] = json_constant_value(value)
+
+        index += 1
+
+    return constants
+
+
+def add_private_rate_calls(calls, implementation_key):
+    for name, address_ref, signature in PRIVATE_RATE_OVERRIDES.get(implementation_key, []):
+        calls.append(state_call(name, address_ref, signature, [], ["uint256"], "none"))
+
+
+def add_base_virtual_price_call(calls, implementation_key):
+    if implementation_key not in LEGACY_BASE_VP_IMPLEMENTATIONS:
+        return
+    calls.append(state_call(
+        "base_pool_virtual_price",
+        "base_pool_address",
+        "get_virtual_price()",
+        [],
+        ["uint256"],
+        "none",
+    ))
+
+
+def build_state_manifest(implementation_address, abi, source_text, usage):
+    implementation_key = lower_address(implementation_address)
     calls = []
-    skipped = []
-    unknown_view_functions = []
+    simulated_functions = []
 
     for item in abi:
         if item["type"] != "function":
-            continue
-        state_mutability = abi_state_mutability(item)
-        if state_mutability not in ("view", "pure"):
             continue
 
         name = item["name"]
         inputs = abi_types(item["inputs"])
         outputs = abi_types(item["outputs"])
         signature = abi_function_signature(item)
-        selector = abi_function_selector(signature)
 
-        if name in LOADER_SKIP_REASONS:
-            skipped.append({
-                "signature": signature,
-                "selector": selector,
+        if name in QUOTE_OR_SIMULATION_SKIP_NAMES:
+            simulated_functions.append({
                 "name": name,
-                "inputs": inputs,
-                "reason": LOADER_SKIP_REASONS[name],
-            })
-        elif not inputs:
-            calls.append({
                 "signature": signature,
-                "selector": selector,
-                "name": name,
+                "selector": abi_function_selector(signature),
                 "inputs": inputs,
                 "outputs": outputs,
-                "stateMutability": state_mutability,
-                "arg_policy": "none",
-                "category": "pool_param",
             })
-        elif signature in INDEXED_GETTER_CATEGORIES:
-            if signature in N_COINS_MINUS_1_GETTERS:
-                arg_policy = "range:n_coins_minus_1"
-            elif signature in BASE_N_COINS_GETTERS:
-                arg_policy = "range:base_n_coins"
-            else:
-                arg_policy = "range:n_coins"
-            calls.append({
-                "signature": signature,
-                "selector": selector,
-                "name": name,
-                "inputs": inputs,
-                "outputs": outputs,
-                "stateMutability": state_mutability,
-                "arg_policy": arg_policy,
-                "category": INDEXED_GETTER_CATEGORIES[signature],
-            })
-        elif signature in PAIRWISE_GETTER_CATEGORIES:
-            calls.append({
-                "signature": signature,
-                "selector": selector,
-                "name": name,
-                "inputs": inputs,
-                "outputs": outputs,
-                "stateMutability": state_mutability,
-                "arg_policy": "pairs:n_coins",
-                "category": PAIRWISE_GETTER_CATEGORIES[signature],
-            })
-        else:
-            unknown_view_functions.append({
-                "signature": signature,
-                "selector": selector,
-                "name": name,
-                "inputs": inputs,
-                "outputs": outputs,
-                "stateMutability": state_mutability,
-            })
+            continue
+
+        state_mutability = abi_state_mutability(item)
+        if state_mutability not in ("view", "pure") or name in ACCOUNT_SPECIFIC_SKIP_NAMES:
+            continue
+
+        if not inputs:
+            calls.append(state_call(name, "pool_address", signature, inputs, outputs, "none"))
+            continue
+
+        arg_policy = call_arg_policy(signature)
+        if arg_policy:
+            calls.append(state_call(name, "pool_address", signature, inputs, outputs, arg_policy))
+
+    add_private_rate_calls(calls, implementation_key)
+    add_base_virtual_price_call(calls, implementation_key)
 
     return {
-        "generated_at": now_utc(),
+        "constants": parse_state_constants(source_text),
         "calls": sort_manifest_entries(calls),
-        "skipped": sort_manifest_entries(skipped),
-        "unknown_view_functions": sort_manifest_entries(unknown_view_functions),
+        "simulated_functions": sort_manifest_entries(simulated_functions),
     }
 
 
@@ -457,6 +700,22 @@ DERIVED_POOL_FIELDS = (
     "weth_address",
     "initial_price",
     "initial_prices",
+    "lending_factory_type",
+    "controller_address",
+    "vault_address",
+    "borrowed_token_address",
+    "collateral_token_address",
+    "price_oracle_address",
+    "monetary_policy_address",
+    "gauge_address",
+    "borrowed_precision",
+    "collateral_precision",
+    "base_price",
+    "sqrt_band_ratio",
+    "log_A_ratio",
+    "price_oracle_contract",
+    "controller",
+    "vault",
 )
 
 
@@ -749,6 +1008,54 @@ def make_coins(w3, values, block_number=None, decimals=None):
             coin["decimals"] = str(decimals[index])
         coins.append(coin)
     return coins
+
+
+def token_precision(w3, address, block_number):
+    decimals = int(call_contract(contract_for(w3, address, ERC20_STRING_ABI), "decimals", [], block_number))
+    if decimals > 18:
+        raise ValueError(f"token decimals > 18: {address} decimals={decimals}")
+    return 10 ** (18 - decimals)
+
+
+def llamma_a_ratio(A):
+    return 10**18 * A // (A - 1)
+
+
+def llamma_sqrt_band_ratio(A):
+    return math.isqrt(llamma_a_ratio(A) * 10**18)
+
+
+def llamma_log_a_ratio(A):
+    x = llamma_a_ratio(A)
+    result = 0
+    for i in range(8):
+        t = 2 ** (7 - i)
+        p = 2 ** t
+        if x >= p * 10**18:
+            x //= p
+            result += t * 10**18
+
+    d = 10**18
+    for _ in range(59):
+        if x >= 2 * 10**18:
+            result += d
+            x //= 2
+        x = x * x // 10**18
+        d //= 2
+
+    return result * 10**18 // 1442695040888963328
+
+
+def lending_market_amm_immutable_fields(w3, block_number, borrowed_token, collateral_token, A, price_oracle_contract):
+    base_price = int(call_contract(contract_for(w3, price_oracle_contract, PRICE_ORACLE_ABI), "price", [], block_number))
+    return {
+        "borrowed_precision": str(token_precision(w3, borrowed_token, block_number)),
+        "collateral_precision": str(token_precision(w3, collateral_token, block_number)),
+        "base_price": str(base_price),
+        "sqrt_band_ratio": str(llamma_sqrt_band_ratio(A)),
+        "log_A_ratio": str(llamma_log_a_ratio(A)),
+        "price_oracle_contract": price_oracle_contract,
+    }
 
 
 def pool_base_address(record):
@@ -1363,6 +1670,8 @@ def artifact_is_complete(kind, address):
         meta = json.loads(meta_path.read_text())
     except Exception:
         return False
+    if kind == "pool_implementations" and "state_manifest" not in meta:
+        return False
     if meta.get("source_status") == "verified":
         for sf in meta.get("source_files") or []:
             if not (out_dir / sf).exists():
@@ -1384,6 +1693,15 @@ def ensure_address_artifact(kind, address, usage):
             "source_files": meta.get("source_files"),
         }
     return write_address_artifact(kind, address, usage)
+
+
+def artifact_source_text(out_dir, source_files):
+    chunks = []
+    for source_file in source_files:
+        path = out_dir / source_file
+        if path.exists():
+            chunks.append(path.read_text())
+    return "\n".join(chunks)
 
 
 def write_address_artifact(kind, address, usage):
@@ -1431,7 +1749,8 @@ def write_address_artifact(kind, address, usage):
     }
     if kind == "pool_implementations":
         abi = json.loads((out_dir / "abi.json").read_text())
-        metadata["loader_call_manifest"] = build_loader_call_manifest(abi)
+        source_text = artifact_source_text(out_dir, source_files)
+        metadata["state_manifest"] = build_state_manifest(address, abi, source_text, usage)
     if fallback:
         metadata.update({
             "source_pool_address": fallback["source_pool_address"],
@@ -1466,9 +1785,390 @@ def refresh_unique_artifacts(output):
             output["unique_addresses"][kind].append(ensure_address_artifact(kind, address, usage))
 
 
+def implementation_records(output):
+    records = defaultdict(list)
+    for record in output.get("pools", []):
+        key = lower_address(record.get("implementation_address"))
+        if key:
+            records[key].append(record)
+    return records
+
+
+def ref_indexes(record, index_text):
+    if index_text == "i":
+        n_coins = record.get("n_coins")
+        return range(int(n_coins)) if n_coins is not None else None
+    return [int(index_text)]
+
+
+def address_ref_resolves(record, address_ref):
+    if address_ref == "pool_address":
+        return normalize_address(record.get("pool_address")) is not None
+    if address_ref in ("base_pool_address", "price_oracle_contract"):
+        return normalize_address(record.get(address_ref)) is not None
+
+    match = re.fullmatch(r"coins\[(\d+|i)\]\.address", address_ref)
+    if match:
+        coins = record.get("coins") or []
+        indexes = ref_indexes(record, match.group(1))
+        if indexes is None:
+            return False
+        for index in indexes:
+            coin = coins[index] if index < len(coins) else None
+            address = coin.get("address") if isinstance(coin, dict) else coin
+            if normalize_address(address) is None:
+                return False
+        return True
+
+    match = re.fullmatch(r"oracles\[(\d+|i)\]", address_ref)
+    if match:
+        oracles = record.get("oracles") or []
+        indexes = ref_indexes(record, match.group(1))
+        if indexes is None:
+            return False
+        for index in indexes:
+            if index >= len(oracles) or normalize_address(oracles[index]) is None:
+                return False
+        return True
+
+    return False
+
+
+def selector_ref_resolves(record, selector_ref):
+    match = re.fullmatch(r"method_ids\[(\d+|i)\]", selector_ref)
+    if not match:
+        return False
+
+    method_ids = record.get("method_ids") or []
+    indexes = ref_indexes(record, match.group(1))
+    if indexes is None:
+        return False
+    for index in indexes:
+        if index >= len(method_ids):
+            return False
+        selector = as_hex(method_ids[index]).lower()
+        if selector in ("0x", "0x00000000"):
+            return False
+    return True
+
+
+def validate_state_manifests(output):
+    records_by_impl = implementation_records(output)
+    errors = []
+    unresolved_refs = []
+    implementations_with_external_calls = 0
+    present_legacy_base_vp = 0
+    present_private_rate = 0
+
+    for implementation_key, records in sorted(records_by_impl.items()):
+        implementation_address = records[0].get("implementation_address")
+        meta_path = address_artifact_dir("pool_implementations", implementation_address) / "metadata.json"
+        if not meta_path.exists():
+            errors.append(f"missing metadata: {implementation_address}")
+            continue
+
+        metadata = json.loads(meta_path.read_text())
+        manifest = metadata.get("state_manifest")
+        if not manifest:
+            errors.append(f"missing state_manifest: {implementation_address}")
+            continue
+
+        for key in ("constants", "calls", "simulated_functions"):
+            if key not in manifest:
+                errors.append(f"state_manifest missing {key}: {implementation_address}")
+        calls = manifest.get("calls") or []
+        simulated_functions = manifest.get("simulated_functions") or []
+        if not calls:
+            errors.append(f"state_manifest has no calls: {implementation_address}")
+        if not simulated_functions:
+            errors.append(f"state_manifest has no simulated_functions: {implementation_address}")
+
+        has_external_call = False
+        for call in calls:
+            if call.get("address"):
+                if normalize_address(call["address"]) is None:
+                    unresolved_refs.append((implementation_address, call["name"], "address", call["address"]))
+                has_external_call = True
+            elif call.get("address_ref"):
+                address_ref = call["address_ref"]
+                if address_ref != "pool_address":
+                    has_external_call = True
+                for record in records:
+                    if not address_ref_resolves(record, address_ref):
+                        unresolved_refs.append((implementation_address, call["name"], "address_ref", address_ref, record.get("pool_address")))
+            else:
+                unresolved_refs.append((implementation_address, call.get("name"), "address_ref", None))
+
+            selector_ref = call.get("selector_ref")
+            if selector_ref:
+                for record in records:
+                    if not selector_ref_resolves(record, selector_ref):
+                        unresolved_refs.append((implementation_address, call["name"], "selector_ref", selector_ref, record.get("pool_address")))
+            elif not call.get("selector"):
+                errors.append(f"call missing selector/selector_ref: {implementation_address} {call.get('name')}")
+
+        if has_external_call:
+            implementations_with_external_calls += 1
+
+        call_names = {call.get("name") for call in calls}
+        if implementation_key in PRIVATE_RATE_IMPLEMENTATIONS:
+            present_private_rate += 1
+            for name, _, _ in PRIVATE_RATE_OVERRIDES.get(implementation_key, []):
+                if name not in call_names:
+                    errors.append(f"missing private-rate call: {implementation_address} {name}")
+            for constant_name in PRIVATE_RATE_REQUIRED_CONSTANTS.get(implementation_key, set()):
+                if constant_name not in manifest.get("constants", {}):
+                    errors.append(f"missing private-rate constant: {implementation_address} {constant_name}")
+
+        if implementation_key in LEGACY_BASE_VP_IMPLEMENTATIONS:
+            present_legacy_base_vp += 1
+            has_base_call = any(
+                call.get("address_ref") == "base_pool_address"
+                and call.get("signature") == "get_virtual_price()"
+                for call in calls
+            )
+            if not has_base_call:
+                errors.append(f"missing base virtual price call: {implementation_address}")
+
+    log(f"pool implementations: {len(records_by_impl)}")
+    log(f"implementations with external calls: {implementations_with_external_calls}")
+    log(f"legacy base-vp implementations: {present_legacy_base_vp}")
+    log(f"private-rate implementations: {present_private_rate}")
+    log(f"unresolved refs: {len(unresolved_refs)}")
+    if BROKEN_PRIVATE_RATE_IMPLEMENTATIONS & set(records_by_impl):
+        log(f"broken private-rate implementations skipped: {len(BROKEN_PRIVATE_RATE_IMPLEMENTATIONS & set(records_by_impl))}")
+
+    if unresolved_refs:
+        for item in unresolved_refs[:20]:
+            errors.append(f"unresolved ref: {item}")
+    if errors:
+        raise ValueError("state manifest validation failed:\n" + "\n".join(errors[:50]))
+
+
 # ---------------------------------------------------------------------------
 # Main indexing
 # ---------------------------------------------------------------------------
+
+
+def amm_creation_metadata(w3, amm):
+    creation = get_contract_creation(amm)
+    tx_hash = creation["deployment_tx"]
+    tx = w3.eth.get_transaction(tx_hash)
+    block_number = int(tx["blockNumber"])
+    timestamp = block_timestamp(w3, block_number)
+    return tx_hash, block_number, timestamp
+
+
+def lending_market_deployment_details(factory, tx_hash, block_number, timestamp, args):
+    return {
+        "factory": factory,
+        "txHash": tx_hash,
+        "blockNumber": str(block_number),
+        "timestamp": str(timestamp),
+        "block_datetime": utc_datetime(timestamp),
+        "block_datetime_utc": utc_datetime_plain(timestamp),
+        "function": "lending_market",
+        "args": args,
+    }
+
+
+def find_lending_market_create_call(w3, tx, tx_hash, amm, factory):
+    factory = normalize_address(factory)
+    tx_to = normalize_address(tx.get("to")) if tx.get("to") else None
+    if tx_to == factory:
+        decoded = decode_calldata(w3, tx_to, tx.get("input"))
+        if decoded.get("decode_status") == "decoded" and decoded.get("function") in LENDING_MARKET_CREATE_FUNCTION_NAMES:
+            return decoded
+
+    trace = trace_transaction(w3, tx_hash)
+    create_path = find_create_path(trace, amm)
+    if create_path is None:
+        raise RuntimeError(f"lending AMM create not found in trace: amm={amm} tx={tx_hash}")
+
+    decoded_path = decoded_path_to_create(w3, trace, create_path)
+    for item in reversed(decoded_path[:-1]):
+        target = normalize_address(item.get("target") or item.get("to"))
+        if target == factory and item.get("function") in LENDING_MARKET_CREATE_FUNCTION_NAMES:
+            return item
+    raise RuntimeError(f"lending market create call not found: factory={factory} amm={amm} tx={tx_hash}")
+
+
+def build_crvusd_lending_market_record(w3, factory_config, contract, index, amm):
+    factory = normalize_address(factory_config["address"])
+    tx_hash, block_number, timestamp = amm_creation_metadata(w3, amm)
+    tx = w3.eth.get_transaction(tx_hash)
+    create_call = find_lending_market_create_call(w3, tx, tx_hash, amm, factory)
+    if create_call["function"] != "add_market":
+        raise RuntimeError(f"unexpected crvUSD lending create function: {create_call['function']}")
+    create_args = create_call["args"]
+
+    borrowed_token = normalize_address(call_contract(contract, "stablecoin", [], block_number))
+    collateral_token = normalize_address(call_contract(contract, "collaterals", [index], block_number))
+    controller = normalize_address(call_contract(contract, "controllers", [index], block_number))
+    implementation = normalize_address(call_contract(contract, factory_config["amm_implementation_function"], [], block_number))
+    price_oracle_contract = normalize_address(create_args["_price_oracle_contract"])
+    if not borrowed_token or not collateral_token or not controller or not implementation or not price_oracle_contract:
+        raise RuntimeError(f"empty crvUSD lending market field: factory={factory} index={index}")
+
+    args = {
+        **to_jsonable(create_args),
+        "market_index": str(index),
+        "factory_type": factory_config["factory_type"],
+        "create_function": create_call["function"],
+        "borrowed_token": borrowed_token,
+        "collateral_token": collateral_token,
+        "controller": controller,
+        "amm_implementation": implementation,
+    }
+    record = {
+        "pool_address": amm,
+        "listed_in_factories": [factory],
+        "factory_list_index_by_factory": {factory: index},
+        "deployment_details": lending_market_deployment_details(factory, tx_hash, block_number, timestamp, args),
+        "status": "resolved",
+        "pool_type": "lending_market_amm",
+        "implementation_type": factory_config["factory_type"],
+        "lending_factory_type": factory_config["factory_type"],
+        "implementation_address": implementation,
+        "controller_address": controller,
+        "borrowed_token_address": borrowed_token,
+        "collateral_token_address": collateral_token,
+        "controller": controller,
+        "coins": make_coins(w3, [borrowed_token, collateral_token], block_number),
+        "n_coins": 2,
+    }
+    record.update(lending_market_amm_immutable_fields(
+        w3, block_number, borrowed_token, collateral_token, int(create_args["A"]), price_oracle_contract
+    ))
+    return record
+
+
+def build_one_way_lending_market_record(w3, factory_config, contract, index, amm):
+    factory = normalize_address(factory_config["address"])
+    tx_hash, block_number, timestamp = amm_creation_metadata(w3, amm)
+    tx = w3.eth.get_transaction(tx_hash)
+    create_call = find_lending_market_create_call(w3, tx, tx_hash, amm, factory)
+    create_args = create_call["args"]
+
+    borrowed_token = normalize_address(call_contract(contract, "borrowed_tokens", [index], block_number))
+    collateral_token = normalize_address(call_contract(contract, "collateral_tokens", [index], block_number))
+    controller = normalize_address(call_contract(contract, "controllers", [index], block_number))
+    vault = normalize_address(call_contract(contract, "vaults", [index], block_number))
+    price_oracle = normalize_address(call_contract(contract, "price_oracles", [index], block_number))
+    monetary_policy = normalize_address(call_contract(contract, "monetary_policies", [index], block_number))
+    gauge = normalize_address(call_contract(contract, "gauges", [index], block_number))
+    name = call_contract(contract, "names", [index], block_number)
+    implementation = normalize_address(call_contract(contract, factory_config["amm_implementation_function"], [], block_number))
+    if create_call["function"] == "create":
+        price_oracle_contract = normalize_address(create_args["price_oracle"])
+    elif create_call["function"] == "create_from_pool":
+        price_oracle_contract = price_oracle
+    else:
+        raise RuntimeError(f"unexpected one-way lending create function: {create_call['function']}")
+    if not borrowed_token or not collateral_token or not controller or not vault or not price_oracle or not monetary_policy or not implementation:
+        raise RuntimeError(f"empty one-way lending market field: factory={factory} index={index}")
+    if price_oracle_contract != price_oracle:
+        raise RuntimeError(f"one-way lending price oracle mismatch: factory={factory} index={index}")
+
+    args = {
+        **to_jsonable(create_args),
+        "market_index": str(index),
+        "factory_type": factory_config["factory_type"],
+        "create_function": create_call["function"],
+        "borrowed_token": borrowed_token,
+        "collateral_token": collateral_token,
+        "controller": controller,
+        "vault": vault,
+        "price_oracle": price_oracle,
+        "monetary_policy": monetary_policy,
+        "gauge": gauge,
+        "amm_implementation": implementation,
+        "name": name,
+    }
+    record = {
+        "pool_address": amm,
+        "listed_in_factories": [factory],
+        "factory_list_index_by_factory": {factory: index},
+        "deployment_details": lending_market_deployment_details(factory, tx_hash, block_number, timestamp, args),
+        "status": "resolved",
+        "name": name,
+        "pool_type": "lending_market_amm",
+        "implementation_type": factory_config["factory_type"],
+        "lending_factory_type": factory_config["factory_type"],
+        "implementation_address": implementation,
+        "controller_address": controller,
+        "vault_address": vault,
+        "borrowed_token_address": borrowed_token,
+        "collateral_token_address": collateral_token,
+        "price_oracle_address": price_oracle,
+        "monetary_policy_address": monetary_policy,
+        "gauge_address": gauge,
+        "controller": controller,
+        "vault": vault,
+        "coins": make_coins(w3, [borrowed_token, collateral_token], block_number),
+        "n_coins": 2,
+    }
+    record.update(lending_market_amm_immutable_fields(
+        w3, block_number, borrowed_token, collateral_token, int(create_args["A"]), price_oracle_contract
+    ))
+    return record
+
+
+def build_lending_market_record(w3, factory_config, contract, index, amm):
+    if factory_config["factory_type"] == "crvusd_controller_factory":
+        return build_crvusd_lending_market_record(w3, factory_config, contract, index, amm)
+    if factory_config["factory_type"] == "one_way_lending_factory":
+        return build_one_way_lending_market_record(w3, factory_config, contract, index, amm)
+    raise ValueError(f"unknown lending factory type: {factory_config['factory_type']}")
+
+
+def get_lending_market_count(w3, factory_config):
+    factory = normalize_address(factory_config["address"])
+    abi, source, status = get_abi(factory)
+    if not abi:
+        raise RuntimeError(f"lending factory ABI unavailable for {factory}: {status} {source}")
+    contract = contract_for(w3, factory, abi)
+    return int(call_contract(contract, factory_config["market_count_function"])), contract, source, status
+
+
+def process_lending_market_factory(w3, factory_config, output, processed_indices, records_by_pool, factories):
+    factory = normalize_address(factory_config["address"])
+    market_count, contract, abi_source, abi_status = get_lending_market_count(w3, factory_config)
+    output.setdefault("factories", {})[factory] = {
+        "factory_type": factory_config["factory_type"],
+        "market_count": market_count,
+        "abi_status": abi_status,
+        "abi_source": abi_source,
+        "last_scanned_at": now_utc(),
+        "last_scanned_at_utc": now_utc_plain(),
+    }
+
+    changed = 0
+    log(f"lending_factory={factory} market_count={market_count}")
+    for index in range(market_count):
+        if index in processed_indices.get(factory, set()):
+            continue
+
+        amm = normalize_address(call_contract(contract, "amms", [index]))
+        if not amm:
+            raise RuntimeError(f"empty lending market AMM: factory={factory} index={index}")
+        existing = records_by_pool.get(lower_address(amm))
+        if existing:
+            merge_listed_factory(existing, factory, index)
+            changed += 1
+        else:
+            record = build_lending_market_record(w3, factory_config, contract, index, amm)
+            output["pools"].append(compact_pool_record(record))
+            records_by_pool[lower_address(amm)] = output["pools"][-1]
+            changed += 1
+            if changed % PROGRESS_EVERY == 0:
+                log(f"  index={index} changed={changed} amm={amm}")
+
+        processed_indices[factory].add(index)
+        if changed % SAVE_EVERY == 0:
+            save_output(output, factories)
+
+    return changed
 
 
 def get_pool_count(w3, factory):
@@ -1579,7 +2279,9 @@ def main():
         raise RuntimeError(f"RPC is not connected: {RPC_URL}")
 
     factories = [normalize_address(factory) for factory in FACTORIES]
-    if any(factory is None for factory in factories):
+    lending_factories = [normalize_address(factory["address"]) for factory in LENDING_MARKET_FACTORIES]
+    all_factories = factories + lending_factories
+    if any(factory is None for factory in all_factories):
         raise ValueError("FACTORIES contains an empty or zero address")
     factory_set = {factory.lower() for factory in factories}
     output = load_output()
@@ -1595,10 +2297,14 @@ def main():
     records_by_pool = pool_records_by_address(output)
     total_changed = 0
 
-    log(f"factories={len(factories)} existing_records={len(records_by_pool)}")
+    log(f"factories={len(factories)} lending_market_factories={len(lending_factories)} existing_records={len(records_by_pool)}")
     for factory in factories:
-        total_changed += process_factory(w3, factory, output, processed_indices, records_by_pool, factory_set, factories)
-        save_output(output, factories)
+        total_changed += process_factory(w3, factory, output, processed_indices, records_by_pool, factory_set, all_factories)
+        save_output(output, all_factories)
+
+    for factory_config in LENDING_MARKET_FACTORIES:
+        total_changed += process_lending_market_factory(w3, factory_config, output, processed_indices, records_by_pool, all_factories)
+        save_output(output, all_factories)
 
     if total_changed == 0:
         log("no new factory indices")
@@ -1617,20 +2323,23 @@ def main():
     if hardcoded_added:
         log(f"hardcoded pools merged: added={hardcoded_added} "
             f"skipped_duplicates={len(hardcoded_data.get('pools', [])) - hardcoded_added}")
-        save_output(output, factories)
+        save_output(output, all_factories)
 
     log("refreshing pool derived fields")
     refresh_pool_derived_fields(w3, output)
-    save_output(output, factories)
+    save_output(output, all_factories)
 
     views_changed = refresh_current_views_implementations(w3, output)
     if views_changed:
         log(f"factory views implementations refreshed: changed={views_changed}")
-        save_output(output, factories)
+        save_output(output, all_factories)
 
     log("refreshing implementation artifacts (pool / math / views)")
     refresh_unique_artifacts(output)
-    save_output(output, factories)
+
+    log("validating state manifests")
+    validate_state_manifests(output)
+    save_output(output, all_factories)
 
     log("\nwritten:")
     log(f"output={OUTPUT_PATH}")
