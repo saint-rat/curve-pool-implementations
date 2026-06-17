@@ -1,7 +1,7 @@
 {
   "address": "0x07CdEBF81977E111B08C126DEFA07818d0045b80",
   "kind": "views_implementation",
-  "written_at": "2026-06-16T05:57:21Z",
+  "written_at": "2026-06-17T02:12:26Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",
@@ -23,7 +23,7 @@
     "Implementation": "",
     "SwarmSource": ""
   },
-  "used_by_pool_count": 382,
+  "used_by_pool_count": 355,
   "first_seen_pool": "0x004C167d27ADa24305b76D80762997Fa6EB8d9B2",
   "first_seen_factory": "0x98EE851a00abeE0d95D08cF4CA2BdCE32aeaAF7F",
   "first_seen_block": 19379915,

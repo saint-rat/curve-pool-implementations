@@ -1388,52 +1388,47 @@ def resolve_lp_token(w3, factory, pool_address, block_number):
     return normalize_address(pool_address)
 
 
-def resolve_aux_implementations(w3, factory, block_number):
-    abi, _, _ = get_abi(factory)
-    if not abi:
-        return {}
-
-    contract = contract_for(w3, factory, abi)
-    names = function_names(abi)
+def resolve_aux_implementations(w3, pool_address, implementation, factory, block_number):
+    # MATH()/VIEW() are per-pool (read from the pool proxy); fall back to the
+    # factory's math_implementation()/views_implementation() when the pool lacks them.
     result = {}
 
-    if "math_implementation" in names:
-        value, error = safe_call_contract(contract, "math_implementation", [], block_number)
-        address = normalize_address(value) if not error else None
-        if address:
-            result["math_implementation_address"] = address
+    pool_abi = None
+    if implementation:
+        pool_abi, _, _ = get_abi(implementation)
+    pool_names = function_names(pool_abi) if pool_abi else set()
 
-    if "views_implementation" in names:
-        value, error = safe_call_contract(contract, "views_implementation", [])
+    factory_abi = None
+    if factory:
+        factory_abi, _, _ = get_abi(factory)
+    factory_names = function_names(factory_abi) if factory_abi else set()
+    factory_contract = contract_for(w3, factory, factory_abi) if factory_abi else None
+
+    if "MATH" in pool_names:
+        contract = contract_for(w3, pool_address, pool_abi)
+        value, error = safe_call_contract(contract, "MATH", [], block_number)
         address = normalize_address(value) if not error else None
-        if address:
-            result["views_implementation_address"] = address
+    elif factory_contract and "math_implementation" in factory_names:
+        value, error = safe_call_contract(factory_contract, "math_implementation", [], block_number)
+        address = normalize_address(value) if not error else None
+    else:
+        address = None
+    if address:
+        result["math_implementation_address"] = address
+
+    if "VIEW" in pool_names:
+        contract = contract_for(w3, pool_address, pool_abi)
+        value, error = safe_call_contract(contract, "VIEW", [], block_number)
+        address = normalize_address(value) if not error else None
+    elif factory_contract and "views_implementation" in factory_names:
+        value, error = safe_call_contract(factory_contract, "views_implementation", [])
+        address = normalize_address(value) if not error else None
+    else:
+        address = None
+    if address:
+        result["views_implementation_address"] = address
 
     return result
-
-
-def refresh_current_views_implementations(w3, output):
-    views_by_factory = {}
-    for record in output.get("pools", []):
-        factory = record_factory(record)
-        if not factory or factory in views_by_factory:
-            continue
-        abi, _, _ = get_abi(factory)
-        if not abi or "views_implementation" not in function_names(abi):
-            views_by_factory[factory] = None
-            continue
-        contract = contract_for(w3, factory, abi)
-        value, error = safe_call_contract(contract, "views_implementation", [])
-        views_by_factory[factory] = normalize_address(value) if not error else None
-
-    changed = 0
-    for record in output.get("pools", []):
-        factory = record_factory(record)
-        views = views_by_factory.get(factory)
-        if views and record.get("views_implementation_address") != views:
-            record["views_implementation_address"] = views
-            changed += 1
-    return changed
 
 
 # ---------------------------------------------------------------------------
@@ -1486,6 +1481,9 @@ def parse_json_source_payload(source_code):
     return None
 
 
+COMPILER_PLACEHOLDER_PATHS = {"<unknown>", "<stdin>"}
+
+
 def parse_etherscan_source_files(source_code, contract_name, compiler_version):
     if not source_code:
         return []
@@ -1495,6 +1493,8 @@ def parse_etherscan_source_files(source_code, contract_name, compiler_version):
         files = []
         for raw_path, item in parsed["sources"].items():
             content = item.get("content", "") if isinstance(item, dict) else str(item)
+            if raw_path in COMPILER_PLACEHOLDER_PATHS:
+                raw_path = contract_name or "source"
             files.append({"path": safe_relative_source_path(raw_path, default_extension), "content": content})
         return files
     return [{"path": safe_relative_source_path(contract_name or "source", default_extension), "content": source_code}]
@@ -2227,7 +2227,7 @@ def build_pool_record(w3, pool_address, listed_factory, factory_index, factory_s
         record["unresolved_reason"] = reason
     if implementation:
         record["implementation_address"] = implementation
-        record.update(resolve_aux_implementations(w3, factory, block_number))
+        record.update(resolve_aux_implementations(w3, pool_address, implementation, factory, block_number))
     return record
 
 
@@ -2328,11 +2328,6 @@ def main():
     log("refreshing pool derived fields")
     refresh_pool_derived_fields(w3, output)
     save_output(output, all_factories)
-
-    views_changed = refresh_current_views_implementations(w3, output)
-    if views_changed:
-        log(f"factory views implementations refreshed: changed={views_changed}")
-        save_output(output, all_factories)
 
     log("refreshing implementation artifacts (pool / math / views)")
     refresh_unique_artifacts(output)

@@ -1,7 +1,7 @@
 {
   "address": "0x93054188d876f558f4a66B2EF1d97d16eDf0895B",
   "kind": "pool_implementation",
-  "written_at": "2026-06-16T05:56:23Z",
+  "written_at": "2026-06-17T02:11:24Z",
   "abi_status": "source_getsourcecode",
   "abi_source": "etherscan_getsourcecode",
   "source_status": "verified",

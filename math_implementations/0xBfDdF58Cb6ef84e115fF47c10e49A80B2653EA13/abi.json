@@ -1,0 +1,143 @@
+[
+  {
+    "inputs": [
+      {
+        "name": "_amp",
+        "type": "uint256"
+      },
+      {
+        "name": "_gamma",
+        "type": "uint256"
+      },
+      {
+        "name": "xp",
+        "type": "uint256[2]"
+      },
+      {
+        "name": "D",
+        "type": "uint256"
+      },
+      {
+        "name": "i",
+        "type": "uint256"
+      }
+    ],
+    "name": "get_y",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256[2]"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_amp",
+        "type": "uint256"
+      },
+      {
+        "name": "gamma",
+        "type": "uint256"
+      },
+      {
+        "name": "_xp",
+        "type": "uint256[2]"
+      }
+    ],
+    "name": "newton_D",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_amp",
+        "type": "uint256"
+      },
+      {
+        "name": "gamma",
+        "type": "uint256"
+      },
+      {
+        "name": "_xp",
+        "type": "uint256[2]"
+      },
+      {
+        "name": "K0_prev",
+        "type": "uint256"
+      }
+    ],
+    "name": "newton_D",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_xp",
+        "type": "uint256[2]"
+      },
+      {
+        "name": "_D",
+        "type": "uint256"
+      },
+      {
+        "name": "_A_gamma",
+        "type": "uint256[2]"
+      }
+    ],
+    "name": "get_p",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "x",
+        "type": "int256"
+      }
+    ],
+    "name": "wad_exp",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "version",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

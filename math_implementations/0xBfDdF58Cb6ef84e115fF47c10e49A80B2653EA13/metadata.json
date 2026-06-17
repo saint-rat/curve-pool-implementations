@@ -1,0 +1,38 @@
+{
+  "address": "0xBfDdF58Cb6ef84e115fF47c10e49A80B2653EA13",
+  "kind": "math_implementation",
+  "written_at": "2026-06-17T02:12:22Z",
+  "abi_status": "source_getsourcecode",
+  "abi_source": "etherscan_getsourcecode",
+  "source_status": "verified",
+  "source_source": "etherscan_getsourcecode",
+  "source_files": [
+    "source/.venv/lib/python3.12/site-packages/snekmate/utils/math.vy",
+    "source/contracts/main/StableswapMath.vy"
+  ],
+  "source_file_count": 2,
+  "etherscan_source_metadata": {
+    "ContractName": "StableswapMath",
+    "CompilerVersion": "vyper:0.4.3",
+    "OptimizationUsed": "1",
+    "Runs": "0",
+    "ConstructorArguments": "",
+    "EVMVersion": "Default",
+    "Library": "",
+    "LicenseType": "None",
+    "Proxy": "0",
+    "Implementation": "",
+    "SwarmSource": ""
+  },
+  "used_by_pool_count": 8,
+  "first_seen_pool": "0x313698667d7FDD6789a9BC70821309ff891E729A",
+  "first_seen_factory": "0x98EE851a00abeE0d95D08cF4CA2BdCE32aeaAF7F",
+  "first_seen_block": 25145898,
+  "example_pools": [
+    "0x313698667d7FDD6789a9BC70821309ff891E729A",
+    "0x862CB4E988FB66E72f128d1183829f8c05B6c6A0",
+    "0x4F52C3a81E33521e5a9A47FD9D3BE475D2279c2e",
+    "0x656341Ef90b622c6634e0573772FfB7f3669b9f3",
+    "0x537d388d003E01039c31AC5021A33361FAE8b5D2"
+  ]
+}
